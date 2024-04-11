@@ -1,7 +1,7 @@
 ## Start
 
 - Navigera till foldern där du vill att projektmappen ska ligga
-- git clone https://github.com/JensLnu/Qurie-anteckningsbok-team-gbg.git
+- git clone https://github.com/OscarDonald/Todo-App-Grupprojekt#react--vite
 - cd Qurie-anteckningsbok-team-gbg
 - git checkout -b feature/{namn på branch med kebab-case}
 
