@@ -19,7 +19,7 @@ export default function CreateTask() {
     return (
         <div className='add-task-container'> 
             <button
-                className='add-task'
+                className='add-task-btn'
                 onClick={() => setCreateTask(true)} ><AiOutlinePlusCircle />Add Task</button>
             {createTask &&
                 <form>
@@ -45,6 +45,7 @@ export default function CreateTask() {
                     <select>
                         <option value="">{/* en för varje user */}</option>
                     </select>
+                    <label>Todo date</label>
                     <input
                         className='add-task'
                         type="date"
@@ -54,6 +55,7 @@ export default function CreateTask() {
                         max={dateplusOneYear.toLocaleDateString()}
                     />{/* doDate */}
                     <hr />
+                    <label>Deadline</label>
                     <input
                         className='add-task'
                         type="date"
