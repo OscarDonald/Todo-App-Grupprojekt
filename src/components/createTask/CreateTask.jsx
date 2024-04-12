@@ -1,27 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import "../createTask/createTask.css"
+import "../createTask/createTask.css";
 
 export default function CreateTask() {
-    const [createTask, setCreateTask] = useState(false);
+    const [createTask, setCreateTask] = useState(true);
+    const [newTask, setNewTask] = useState({})
     const [taskTitle, setTaskTitle] = useState('');
     const [taskDescription, setTaskDescription] = useState();
+    const [responsibles, setResponsibles] = useState([]);
     const [doDate, setDoDate] = useState('');
     const [deadline, setDeadline] = useState('');
+
     const toDaysDate = new Date();
     const dateplusOneYear = new Date(new Date().setFullYear(toDaysDate.getFullYear() + 1))
 
     const addTask = (e) => {
+        console.log('addTask')
         e.preventDefault();
-        /* dispatchen */
+        setNewTask({
+            id: '3', /* fixa id här eller i taskSlice? */
+            title: taskTitle,
+            description: taskDescription,
+            doDate: doDate,
+            deadline: deadline,
+            responible: responsibles,
+        })
+        dispatch(storeTask(newTask));
+        resetLocalStates();
+    }
+
+    const resetLocalStates = () => {
+        console.log('resetLocalStates')
+        setTaskTitle('');
+        setTaskDescription('');
+        setResponsibles([]);
+        setDoDate('');
+        setDeadline('');
+        setCreateTask(false);
     }
 
     return (
-        <div className='add-task-container'> 
+        <div className='add-task-container'>
             <button
                 className='add-task-btn'
-                onClick={() => setCreateTask(true)} ><AiOutlinePlusCircle />Add Task</button>
-            {createTask &&
+                onClick={() => setCreateTask(false)} ><AiOutlinePlusCircle />Add Task</button>
+            {!createTask &&
                 <form>
                     <input
                         className='add-task'
@@ -29,7 +53,7 @@ export default function CreateTask() {
                         value={taskTitle}
                         onChange={(e) => setTaskTitle(e.target.value)}
                         placeholder='Title'
-                    
+
                     />{/* title */}
                     <hr />
                     <textarea
@@ -40,11 +64,18 @@ export default function CreateTask() {
                         placeholder='Description...'
                         cols={40}
                         rows={10}
-                    
+
                     />{/* desctiption */}
                     <select>
-                        <option value="">{/* en för varje user */}</option>
+                        {/* spara valda users i setResponisbles(...responsibles, user) */}
+                        {/* {userSlice.map(user => <option value={user.name} >{user.name}</option>)} */}
+                        <option value="">user1</option>
                     </select>
+                    {responsibles &&
+                        <ul>
+                            {/* eventuellt en useEffect här varje gång responsibles uppdateras? funkar de så? */}
+                            {responsibles.map(user => <li>{user}</li>)}
+                        </ul>}
                     <label>Todo date</label>
                     <input
                         className='add-task'
