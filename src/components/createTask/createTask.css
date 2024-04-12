@@ -1,0 +1,22 @@
+.add-task-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 20%;
+}
+
+form {
+  margin-top: 5px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 5px;
+}
+
+.add-task {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+}
