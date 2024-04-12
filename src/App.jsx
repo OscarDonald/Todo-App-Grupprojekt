@@ -1,18 +1,17 @@
 import './App.css'
 import CreateTask from './components/createTask/CreateTask'
+import Columns from './components/Columns/Columns.jsx'
 
 function App() {
 
 
   return (
-    <>
-      <h1>Todo App</h1>
-      <p className="read-the-docs">
-        Welcome to a very very immaculate todo app
-      </p>
-      <CreateTask />
-    </>
+    <main>
+      <Columns />
+      <Columns />
+      <Columns />
+    </main>
   )
 }
 
-export default App
+export default App;

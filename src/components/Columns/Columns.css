@@ -1,0 +1,13 @@
+main{
+    display: flex;
+}
+
+.tasks-columns{
+    border: solid green;
+    width: 30vw;
+    height: 50vh;
+}
+
+/* .tasks-list{
+
+} */
