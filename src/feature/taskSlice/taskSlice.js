@@ -2,7 +2,6 @@ import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const initialState = [
     {
-        isLoggedIn: true,
         id: '1',
         title: 'vatta blommorna',
         description: 'ta alla blommor i ditt hem',
@@ -11,7 +10,6 @@ const initialState = [
         responible: [],
 },
 {
-    isLoggedIn: false,
     id: '2',
     title: 'träna',
     description: 'cardio',
@@ -20,7 +18,6 @@ const initialState = [
     responible: [],
 },
 {
-    isLoggedIn: false,
     id: '3',
     title: 'äta',
     description: 'frukost',
