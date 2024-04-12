@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import "../createTask/createTask.css"
 
 export default function CreateTask() {
     const [createTask, setCreateTask] = useState(false);
@@ -16,31 +17,59 @@ export default function CreateTask() {
     }
 
     return (
-        <>
-            <button onClick={() => setCreateTask(true)} ><AiOutlinePlusCircle />Add Task</button>
+        <div className='add-task-container'> 
+            <button
+                className='add-task'
+                onClick={() => setCreateTask(true)} ><AiOutlinePlusCircle />Add Task</button>
             {createTask &&
                 <form>
-                    <input type="text" value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} />{/* title */}
-                    <textarea type="text" value={taskDescription} onChange={(e) => setTaskDescription(e.target.value)} />{/* desctiption */}
+                    <input
+                        className='add-task'
+                        type="text"
+                        value={taskTitle}
+                        onChange={(e) => setTaskTitle(e.target.value)}
+                        placeholder='Title'
+                    
+                    />{/* title */}
+                    <hr />
+                    <textarea
+                        className='add-task'
+                        type="text"
+                        value={taskDescription}
+                        onChange={(e) => setTaskDescription(e.target.value)}
+                        placeholder='Description...'
+                        cols={40}
+                        rows={10}
+                    
+                    />{/* desctiption */}
                     <select>
                         <option value="">{/* en för varje user */}</option>
                     </select>
-                    <input type="date"
+                    <input
+                        className='add-task'
+                        type="date"
                         value={doDate ? doDate : toDaysDate.toLocaleDateString()}
                         onChange={(e) => setDoDate(e.target.value)}
                         min={toDaysDate.toLocaleDateString()}
                         max={dateplusOneYear.toLocaleDateString()}
                     />{/* doDate */}
-                    <input type="date"
+                    <hr />
+                    <input
+                        className='add-task'
+                        type="date"
                         value={deadline}
                         onChange={(e) => setDeadline(e.target.value)}
                         min={toDaysDate.toLocaleDateString()}
                         max={dateplusOneYear.toLocaleDateString()}
                     /> {/* deadline date */}
-                    <button type='submit' onClick={(e) => addTask(e)} >Add Task</button>
+                    <button
+                        className='add-task'
+                        type='submit'
+                        onClick={(e) => addTask(e)}
+                    >Add Task</button>
                 </form>
             }
-        </>
+        </div>
     )
 }
 
