@@ -5,27 +5,26 @@ import "../createTask/createTask.css";
 
 export default function CreateTask() {
     const [createTask, setCreateTask] = useState(true);
-    const [newTask, setNewTask] = useState({})
     const [taskTitle, setTaskTitle] = useState('');
     const [taskDescription, setTaskDescription] = useState();
     const [responsibles, setResponsibles] = useState([]);
     const [doDate, setDoDate] = useState('');
     const [deadline, setDeadline] = useState('');
 
-    const toDaysDate = new Date();
-    const dateplusOneYear = new Date(new Date().setFullYear(toDaysDate.getFullYear() + 1))
+    const toDaysDate = new Date().toLocaleDateString();
+    const dateplusOneYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toLocaleDateString()
 
     const addTask = (e) => {
         console.log('addTask')
         e.preventDefault();
-        setNewTask({
+        const newTask = {
             id: '3', /* fixa id här eller i taskSlice? */
             title: taskTitle,
             description: taskDescription,
             doDate: doDate,
             deadline: deadline,
             responible: responsibles,
-        })
+        }
         dispatch(storeTask(newTask));
         resetLocalStates();
     }
@@ -80,10 +79,10 @@ export default function CreateTask() {
                     <input
                         className='add-task'
                         type="date"
-                        value={doDate ? doDate : toDaysDate.toLocaleDateString()}
+                        value={doDate ? doDate : toDaysDate}
                         onChange={(e) => setDoDate(e.target.value)}
-                        min={toDaysDate.toLocaleDateString()}
-                        max={dateplusOneYear.toLocaleDateString()}
+                        min={toDaysDate}
+                        max={dateplusOneYear}
                     />{/* doDate */}
                     <hr />
                     <label>Deadline</label>
@@ -92,8 +91,8 @@ export default function CreateTask() {
                         type="date"
                         value={deadline}
                         onChange={(e) => setDeadline(e.target.value)}
-                        min={toDaysDate.toLocaleDateString()}
-                        max={dateplusOneYear.toLocaleDateString()}
+                        min={toDaysDate}
+                        max={dateplusOneYear}
                     /> {/* deadline date */}
                     <button
                         className='add-task'
