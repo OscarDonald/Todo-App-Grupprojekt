@@ -1,4 +1,5 @@
 import './App.css'
+import Header from './components/Header/Header'
 import CreateTask from './components/createTask/CreateTask'
 
 function App() {
@@ -6,10 +7,7 @@ function App() {
 
   return (
     <>
-      <h1>Todo App</h1>
-      <p className="read-the-docs">
-        Welcome to a very very immaculate todo app
-      </p>
+      <Header />
       <CreateTask />
     </>
   )
