@@ -1,0 +1,44 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__title {
+    font-family: sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0 auto;
+}
+
+.header__nav__container {
+    position: relative;
+}
+
+.header__ul {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+}
+
+.header__li {
+    /* Oklar storlek på li-element utan denna */
+    /* 4extra px som 'padding' på botten av elementet som inte går bort */
+    height: 35px;
+}
+
+.header__icons{
+    font-size: 35px;
+    color: #d3d3d3;
+    transition: all .20s;
+    cursor: pointer;
+}
+
+.header__icons:hover{
+    font-size: 35px;
+    color: #000000;
+}
+
+.add:hover{
+    rotate: 180deg;
+}
