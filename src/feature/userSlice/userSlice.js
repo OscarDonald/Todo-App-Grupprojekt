@@ -4,8 +4,26 @@ const initialState = {
     users :[
     {
         isLoggedIn: true,
-        id: '1',
+        id: nanoid(),
         name: 'Jens',
+        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
+    },
+    {
+        isLoggedIn: false,
+        id: nanoid(),
+        name: 'Emil',
+        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
+    },
+    {
+        isLoggedIn: false,
+        id: nanoid(),
+        name: 'Nyat',
+        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
+    },
+    {
+        isLoggedIn: false,
+        id: nanoid(),
+        name: 'David',
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     }]
 }
