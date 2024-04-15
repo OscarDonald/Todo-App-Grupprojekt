@@ -1,8 +1,8 @@
-
 import './App.css'
+import CreateTask from './components/createTask/CreateTask'
 
 function App() {
-  
+
 
   return (
     <>
@@ -10,6 +10,7 @@ function App() {
       <p className="read-the-docs">
         Welcome to a very very immaculate todo app
       </p>
+      <CreateTask />
     </>
   )
 }

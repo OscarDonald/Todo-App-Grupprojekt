@@ -30,10 +30,10 @@ export const taskSlice = createSlice({
     name: 'todo',
     initialState,
     reducers: {
-        // addtask(),
+        // storeTask(),
         // removeTask(),
     }
 })
 
-export const {/* funktionerna i taskslice */} = taskSlice.actions;
+export const {/* storeTask, removeTask (reducer funcionerna i taskSlice)*/} = taskSlice.actions;
 export default taskSlice.reducer;
