@@ -26,15 +26,12 @@ export const userSlice = createSlice({
         removeUser: (state, action) => {
             state.users = state.users.filter((user) => user.id !== action.payload);
         },
-        chooseUser:(state, action) => {
+        chooseUser: (state, action) => {
             // Array med alla isLoggedIn = false
             const deactivatedState = state.users.map(user => ({...user, isLoggedIn: false}));
             // Hitta användaren som valts
-            const chosenUser = state.users.find((user) => user.id === action.payload);
             // Uppdatera vald user till isLoggedIn = true
-            const updatedUser = {...chosenUser, isLoggedIn: true}
-            // Lägger till uppdaterad user till arrayen och uppdaterar state
-            state.users = deactivatedState.filter(user => user.id === updatedUser.id ? updatedUser : user);
+            state.users = deactivatedState.map(user => user.id == action.payload ? ({...user, isLoggedIn: true}) : (user));
         },  
     }
 })
