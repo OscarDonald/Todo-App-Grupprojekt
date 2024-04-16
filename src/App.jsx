@@ -8,11 +8,9 @@ function App() {
 
   return (
     <main>
-      <Header />
       <CreateTask />
       <Columns />
-      <Columns />
-      <Columns />
+      
     </main>
 
 
