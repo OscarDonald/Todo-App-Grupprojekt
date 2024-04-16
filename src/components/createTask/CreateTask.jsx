@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from '../../feature/taskSlice/taskSlice';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import "../createTask/createTask.css";
-import userSlice from '../../feature/userSlice/userSlice';
+
 
 export default function CreateTask() {
 
@@ -13,6 +13,8 @@ export default function CreateTask() {
     const [responsibles, setResponsibles] = useState([]);
     const [doDate, setDoDate] = useState('');
     const [deadline, setDeadline] = useState('');
+    const { users } = useSelector(state => state.users);
+    const [availableUsers, setAvailableUsers] = useState(users);
 
     const dispatch = useDispatch();
     const toDaysDate = new Date().toLocaleDateString();
@@ -40,6 +42,21 @@ export default function CreateTask() {
         setIsShowModal(false);
     }
 
+    const handleResponsibles = (targetUser) => {
+        const newUser = availableUsers.find((user) => user.name === targetUser); 
+        setResponsibles([...responsibles, newUser]);  
+        const updatedAvailableUsers = availableUsers.filter((user) => user.name !== targetUser);
+        setAvailableUsers(updatedAvailableUsers);   
+    }
+
+    const handleRemoveResponsibleUser = (e) => {
+        const userName = e.target.textContent;
+        const targetUser = responsibles.find((user) => user.name === userName); 
+        setAvailableUsers([...availableUsers, targetUser]);  
+        const upadatedResponsibles = responsibles.filter((user) => user.name !== userName);
+        setResponsibles(upadatedResponsibles);
+    }
+
     return (
         <div className='add-task-container'>
             <button
@@ -65,16 +82,24 @@ export default function CreateTask() {
                         cols={40}
                         rows={10}
                     />
-                    <select>
-                        {/* spara valda users i setResponisbles(...responsibles, user) */}
-                        {/* {userSlice.map(user => <option value={user.name} >{user.name}</option>)} */}
-                        <option value="">user1</option>
+                    <select onChange={(e) => handleResponsibles(e.target.value)}>
+                        {availableUsers && availableUsers.map((user) =>
+                            <option
+                                key={user.id}
+                                value={user.name}>{user.name}
+                            </option>
+                        )}
                     </select>
-                    {responsibles &&
-                        <ul>
-                            {/* eventuellt en useEffect här varje gång responsibles uppdateras? funkar de så? */}
-                            {responsibles.map(user => <li>{user}</li>)}
-                        </ul>}
+                    
+                    {responsibles.length > 0 &&
+                        <div>
+                            <label>Responsible</label>
+                            <ul>
+                                {responsibles.map((user, index) => <li onClick={handleRemoveResponsibleUser} key={user.name || index}>{user.name}
+                                </li>)}
+                            </ul>
+                        </div>                        
+                    }
                     <label htmlFor="todo-date">Todo date</label>
                     <input
                         id='todo-date'
@@ -100,5 +125,5 @@ export default function CreateTask() {
                 </form>
             }
         </div>
-    )
+    );
 }
