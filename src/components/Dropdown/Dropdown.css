@@ -8,3 +8,63 @@
     border-radius: .5rem;
     width: 250px;
 }
+
+/* -----------
+CREATE DROPDOWN
+-------------- */
+.user__form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    gap: 15px;
+} 
+.user__input {
+    padding: 10px;
+    font-size: .9rem;
+    border: none;
+    border-radius: .5rem;
+    background-color: #cccccc;
+    
+}
+.submit__button {
+    width: 100px;
+    padding: 5px;
+    background-color: rgb(174, 235, 174);
+    border: none;
+    border-radius: .5rem;
+}
+.submit__button:hover{
+    background-color: rgb(122, 233, 122);
+}
+
+/* -----------
+USER DROPDOWN
+-------------- */
+.dropdown__user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: .8rem .6rem;
+    
+    margin: 10px;
+    transition: 0.2s;
+    border-radius: .5rem;
+}
+.dropdown__user:hover {
+    scale: 1.025;
+    background-color: rgba(173, 216, 230, 0.726) !important;
+}
+.dropdown__title{
+    margin: 0 auto;
+    font-size: 1rem;
+}
+.dropdown__delete {
+    height: 17px;
+}
+.delete__icon {
+    color: red;
+    font-size: 17px;
+    
+}

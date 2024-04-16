@@ -1,6 +1,7 @@
 // Ikoner som inte riktigt matchar i tjocklek
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
+
 import './Header.css'
 import Dropdown from "../Dropdown/Dropdown";
 import { useState } from 'react'
