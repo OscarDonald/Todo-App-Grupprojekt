@@ -1,3 +1,5 @@
+// Tillgång till isOpen-state här för att kunna stänga på klick
+// Lägg till ta bort knapp på användarna och binda till färdiga funktionen i slicen
 import './Dropdown.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, chooseUser } from '../../feature/userSlice/userSlice';
@@ -33,6 +35,7 @@ const Dropdown = ({mode}) => {
                     <button 
                         key={user.id}
                         onClick={() => dispatch(chooseUser(user.id))}
+                        style={{backgroundColor: user.isLoggedIn ? 'white' : 'lightblue'}}
                     >{user.name}</button>
                 ))} 
             </>
