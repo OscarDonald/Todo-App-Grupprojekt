@@ -25,7 +25,10 @@ const initialState = {
         id: nanoid(),
         name: 'David',
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
-    }]
+    }
+    
+    
+    ]
 }
 
 export const userSlice = createSlice({
