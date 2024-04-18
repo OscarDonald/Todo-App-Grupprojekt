@@ -24,14 +24,6 @@ const Columns = () => {
         setColumns(updatedColumns);
     };
 
-    const handleTitleEditFinish = (id, newTitle) => {
-        setEditableColumn(null); // Disable editing mode after title change
-    };
-
-    const handleSettingsClick = (id) => {
-        setActiveSettingsColumn(id);
-    };
-
     const handleDeleteColumn = (id) => {
         setColumns(columns.filter(column => column.id !== id));
         setActiveSettingsColumn(null);
@@ -70,7 +62,7 @@ const Columns = () => {
                                 onBlur={() => handleTitleEditFinish(column.id, column.title)} // Call handleTitleEditFinish on blur
                             />
                         ) : (
-                            <h2 className='column-header' onClick={() => setEditableColumn(column.id)}>
+                            <h2 className='column-header' onClick={() => setEditableColumn(null)}>
                                 {column.title}
                             </h2>
                         )}
@@ -83,19 +75,22 @@ const Columns = () => {
                                     <li onClick={() => handleCopyColumn(column.id)}>Copy list</li>
                                 </ul>
                             )}
-                            <button className='settings-button' onClick={() => handleSettingsClick(column.id)}>
+                            <button className='settings-button' onClick={() => setActiveSettingsColumn(column.id)}>
                                 ⋮
                             </button>
                         </div>
                     </div>
                     <div className='tasks-list'>
-                        {column.title === 'To Do' && tasks.map(task => (
-                            <div key={task.id} className='task-card'>
+                  {column.title === 'To Do' && tasks.map(task => (
+                    <div key={task.id}
+                    className='task-card'>
+                              {console.log(task.responible)}
                                 <h4>{task.title}</h4>
                                 <p>{task.description}</p>
                                 <p>Ska göras: {task.doDate}</p>
                                 <p>Deadline: {task.deadline}</p>
-                                <p>Ansvariga: {}</p>
+                            <p>Ansvariga: {task.responible.map(user => user.name + ' ')}</p>
+                
                             </div>
                         ))}
                     </div>
