@@ -29,7 +29,7 @@ const initialState = {
     {
         isLoggedIn: false,
         id: nanoid(),
-        name: 'Kung Donnie',
+        name: 'Noob Donnie',
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     }]
 }
