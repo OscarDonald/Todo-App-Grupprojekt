@@ -44,16 +44,16 @@ export default function CreateTask() {
     }
 
     const handleResponsibles = (targetUser) => {
-        const newUser = availableUsers.find((user) => user.name === targetUser); 
-        setResponsibles([...responsibles, newUser]);  
+        const newUser = availableUsers.find((user) => user.name === targetUser);
+        setResponsibles([...responsibles, newUser]);
         const updatedAvailableUsers = availableUsers.filter((user) => user.name !== targetUser);
-        setAvailableUsers(updatedAvailableUsers);   
+        setAvailableUsers(updatedAvailableUsers);
     }
 
     const handleRemoveResponsibleUser = (e) => {
         const userName = e.target.textContent;
-        const targetUser = responsibles.find((user) => user.name === userName); 
-        setAvailableUsers([...availableUsers, targetUser]);  
+        const targetUser = responsibles.find((user) => user.name === userName);
+        setAvailableUsers([...availableUsers, targetUser]);
         const upadatedResponsibles = responsibles.filter((user) => user.name !== userName);
         setResponsibles(upadatedResponsibles);
     }
@@ -62,7 +62,10 @@ export default function CreateTask() {
         <div className='add-task-container'>
             <button
                 className='add-task-btn'
-                onClick={() => setIsShowModal(prev => !prev)} ><AiOutlinePlusCircle />Add Task</button>
+                onClick={() => {
+                    setIsShowModal(prev => !prev);
+                    setAvailableUsers(users);
+                }} ><AiOutlinePlusCircle />Add Task</button>
             {isShowModal &&
                 <form className='add-task-form' onSubmit={(e) => createTask(e)}>
                     <input
@@ -92,7 +95,7 @@ export default function CreateTask() {
                             </option>
                         )}
                     </select>
-                    
+
                     {responsibles.length > 0 &&
                         <div>
                             <label>Responsible</label>
@@ -100,7 +103,7 @@ export default function CreateTask() {
                                 {responsibles.map((user, index) => <li className='responsible-user-li' onClick={handleRemoveResponsibleUser} key={user.name || index}>{user.name}
                                 </li>)}
                             </ul>
-                        </div>                        
+                        </div>
                     }
                     <label htmlFor="todo-date">Todo date</label>
                     <input
