@@ -39,6 +39,7 @@ export default function CreateTask() {
         setResponsibles([]);
         setDoDate('');
         setDeadline('');
+        setAvailableUsers(users);
         setIsShowModal(false);
     }
 
