@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
 import { addColumn } from '../../feature/columnSlice/columnSlice';
 import { useDispatch } from 'react-redux';
+import { CiSettings } from "react-icons/ci";
 
 const Columns = () => {
     const dispatch = useDispatch();
