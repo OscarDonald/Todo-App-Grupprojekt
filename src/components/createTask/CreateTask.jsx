@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from '../../feature/taskSlice/taskSlice';
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import "../createTask/createTask.css";
+import "./createTask.css";
 
 
 export default function CreateTask() {
