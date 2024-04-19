@@ -5,14 +5,15 @@ header {
 }
 
 .header__title {
-    font-family: sans-serif;
+    color: white;
     font-size: 3.5rem;
-    font-weight: 900;
     margin: 0 auto;
+    margin-bottom: 30px;
 }
 
 .header__nav__container {
     position: relative;
+    bottom: 10px;
 }
 
 .header__ul {
@@ -29,14 +30,14 @@ header {
 
 .header__icons{
     font-size: 35px;
-    color: #d3d3d3;
+    color: #ffffff;
     transition: all .20s;
     cursor: pointer;
 }
 
 .header__icons:hover{
     font-size: 35px;
-    color: #000000;
+    color: #686868;
 }
 
 .add:hover{

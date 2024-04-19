@@ -2,6 +2,7 @@ import CreateTask from '../createTask/CreateTask';
 import './Columns.css';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
+import { CiSettings } from "react-icons/ci";
 
 const Columns = () => {
     const [columns, setColumns] = useState([
@@ -67,18 +68,19 @@ const Columns = () => {
                                 {column.title}
                             </h2>
                         )}
+                        <div className='settings-button' onClick={() => setActiveSettingsColumn(column.id)}>
+                            <CiSettings />
+                        </div>
                         <div className='settings-menu'>
                             {activeSettingsColumn === column.id && (
-                                <ul className='settings-options'>
-                                    <li onClick={() => handleDeleteColumn(column.id)}>Delete list</li>
-                                    <li onClick={() => handleMoveColumn(column.id, 'left')}>Move left</li>
-                                    <li onClick={() => handleMoveColumn(column.id, 'right')}>Move right</li>
-                                    <li onClick={() => handleCopyColumn(column.id)}>Copy list</li>
+                                <ul >
+                                    <li className='settings-options' onClick={() => handleDeleteColumn(column.id)}>Delete list</li>
+                                    <li className='settings-options' onClick={() => handleMoveColumn(column.id, 'left')}>Move left</li>
+                                    <li className='settings-options' onClick={() => handleMoveColumn(column.id, 'right')}>Move right</li>
+                                    <li className='settings-options' onClick={() => handleCopyColumn(column.id)}>Copy list</li>
                                 </ul>
                             )}
-                            <button className='settings-button' onClick={() => setActiveSettingsColumn(column.id)}>
-                                ⋮
-                            </button>
+                            
                         </div>
                     </div>
                     <div className='tasks-list'>

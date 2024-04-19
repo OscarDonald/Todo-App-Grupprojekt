@@ -3,8 +3,11 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  
 }
 
 body {
-  background-color: #1a6593;
+  background-image: url(../image/mountain-background.jpg);
+  background-size: cover;
+  background-position: center;
 }
