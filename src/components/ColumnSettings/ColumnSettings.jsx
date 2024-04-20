@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { removeColumn, moveColumn, copyColumn } from "../../feature/columnSlice/columnSlice";
 import { useDispatch } from "react-redux";
 import { CiSettings } from "react-icons/ci";
+import './ColumnSettings.css'
 
 
 export default function ColumnSettings({column}) {
@@ -42,11 +43,10 @@ export default function ColumnSettings({column}) {
         }, [ref]);
     })(wrapperRef)
 
-
     return (
         <div className='settings-menu' ref={wrapperRef}>
             <button className='settings-button' onClick={handleClick}>
-                <CiSettings />
+                <CiSettings className="settings__icon"/>
             </button>
             {isOpen && activeColumn === column.id && (
                 <ul className='settings-options'>

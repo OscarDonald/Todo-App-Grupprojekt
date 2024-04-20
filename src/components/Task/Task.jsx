@@ -1,4 +1,4 @@
-
+import './Task.css'
 
 export default function Task({task}) {
     return (

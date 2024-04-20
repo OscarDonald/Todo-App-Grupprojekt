@@ -1,12 +1,13 @@
 .add-task-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  position: relative;
+  gap: 5px;
 }
 
 .add-task-btn {
-  padding: 8px 12px;
+  height: 40px;
+  font-size: 1rem;
+  padding: .5rem .75rem;
   border-radius: 5px;
   border: none;
   display: flex;
@@ -16,33 +17,30 @@
 }
 
 .add-task {
-  padding: 8px 12px;
+  padding: .5rem .75rem;
   border-radius: 5px;
   border: none;
 }
 
 .add-task-form {
-  margin-top: 5px;
   background-color: white;
-  border: 1px solid white;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  gap: 5px;
-  z-index: 10;
+  padding: .5rem;
+  gap: .5rem;
 }
 
 .responsible-user-ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 2px;
+  gap: 5px;
 }
 
 .responsible-user-li {
   list-style: none;
   border: 1px solid;
   border-radius: .5rem;
-  width: fit-content;
-  padding: 0 2px;
+  padding: 2px .5rem;
+  cursor: pointer;
 }
