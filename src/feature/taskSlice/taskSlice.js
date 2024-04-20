@@ -9,6 +9,7 @@ const initialState = {
             doDate: 'idag',
             deadline: 'idag',
             responible: [],
+            column: 0
         },
         {
             id: '2',
@@ -17,6 +18,7 @@ const initialState = {
             doDate: '2024',
             deadline: '2025',
             responible: [],
+            column: 1
         },
         {
             id: '3',
@@ -25,6 +27,7 @@ const initialState = {
             doDate: '',
             deadline: '',
             responible: [],
+            column: 2
         }],
 }
 
