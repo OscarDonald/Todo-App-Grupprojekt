@@ -43,6 +43,10 @@ export default function CreateTask() {
         setIsShowModal(false);
     }
 
+    // Finds the user in the availableUsers array whose name matches the targetUser.
+    // Adds the found user to the responsibles array
+    // Remove the user from the list of available users.
+    // Update the list of available users.
     const handleResponsibles = (targetUser) => {
         const newUser = availableUsers.find((user) => user.name === targetUser);
         setResponsibles([...responsibles, newUser]);
@@ -50,6 +54,12 @@ export default function CreateTask() {
         setAvailableUsers(updatedAvailableUsers);
     }
 
+
+    // Get the user's name from the event target.
+    // Find the responsible user with this name.
+    // Add this user to the available users list.
+    // Remove the user from the responsibles list.
+    // Update the responsibles list.
     const handleRemoveResponsibleUser = (e) => {
         const userName = e.target.textContent;
         const targetUser = responsibles.find((user) => user.name === userName);
