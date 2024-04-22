@@ -4,9 +4,9 @@ import { addTask } from '../../feature/taskSlice/taskSlice';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import "./createTask.css";
 
-
+// returns a 'add task' button
+// if its klicked a form to creat a tasks displays
 export default function CreateTask() {
-
     const [isShowModal, setIsShowModal] = useState(false);
     const [taskTitle, setTaskTitle] = useState('');
     const [taskDescription, setTaskDescription] = useState();
@@ -20,6 +20,7 @@ export default function CreateTask() {
     const toDaysDate = new Date().toLocaleDateString();
     const dateplusOneYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toLocaleDateString()
 
+    // adds all local states to 'newTask' object and dispatch it to 'taskSlice'
     const createTask = (e) => {
         e.preventDefault();
         const newTask = {
@@ -34,6 +35,7 @@ export default function CreateTask() {
         resetLocalStates();
     }
 
+    // resets all local states to its inizial values
     const resetLocalStates = () => {
         setTaskTitle('');
         setTaskDescription('');
@@ -54,7 +56,6 @@ export default function CreateTask() {
         const updatedAvailableUsers = availableUsers.filter((user) => user.name !== targetUser);
         setAvailableUsers(updatedAvailableUsers);
     }
-
 
     // Get the user's name from the event target.
     // Find the responsible user with this name.

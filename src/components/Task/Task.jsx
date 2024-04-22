@@ -1,5 +1,6 @@
 import './Task.css'
 
+// renders a task
 export default function Task({task}) {
     return (
         <div className='task-card'>
