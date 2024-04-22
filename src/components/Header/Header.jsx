@@ -2,7 +2,7 @@
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
 
-import './Header.css'
+import styles from './Header.module.css'
 import Dropdown from "../Dropdown/Dropdown";
 import { useState } from 'react'
 
@@ -19,21 +19,21 @@ export default function Header() {
 
     return (
         <header>
-            <h1 className="header__title">Todo App</h1>
-            <div className="header__nav__container">
-                <nav className="header__nav">
-                    <ul className="header__ul">
+            <h1 className={styles.header__title}>Todo App</h1>
+            <div className={styles.header__nav__container}>
+                <nav className={styles.header__nav}>
+                    <ul className={styles.header__ul}>
                         <li 
-                            className="header__li"
+                            className={styles.header__li}
                             onClick={() => handleClick('add')}
                         >
-                            <AiOutlinePlusCircle className="header__icons add"/>
+                            <AiOutlinePlusCircle className={`${styles.header__icons} ${styles.add}`}/>
                         </li>
                         <li 
-                            className="header__li"
+                            className={styles.header__li}
                             onClick={() => handleClick('profile')}
                         >
-                            <FaRegArrowAltCircleDown className="header__icons arrow" style={{rotate: mode === 'profile' && isOpen ? '90deg' : '0deg'}}/>
+                            <FaRegArrowAltCircleDown className={`${styles.header__icons} ${styles.arrow}`}  style={{rotate: mode === 'profile' && isOpen ? '90deg' : '0deg'}}/>
                         </li>
                     </ul>
                 </nav>
