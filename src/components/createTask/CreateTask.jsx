@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from '../../feature/taskSlice/taskSlice';
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import "./createTask.css";
+import styles from "./createTask.module.css";
 
 // returns a 'add task' button
 // if its klicked a form to creat a tasks displays
@@ -71,17 +71,17 @@ export default function CreateTask() {
     }
 
     return (
-        <div className='add-task-container'>
+        <div className={styles.add__task__container}>
             <button
-                className='add-task-btn'
+                className={styles.add__task__btn}
                 onClick={() => {
                     setIsShowModal(prev => !prev);
                     setAvailableUsers(users);
                 }} ><AiOutlinePlusCircle />Add Task</button>
             {isShowModal &&
-                <form className='add-task-form' onSubmit={(e) => createTask(e)}>
+                <form className={styles.add__task__form} onSubmit={(e) => createTask(e)}>
                     <input
-                        className='add-task'
+                        className={styles.add__task}
                         type="text"
                         value={taskTitle}
                         onChange={(e) => setTaskTitle(e.target.value)}
@@ -90,7 +90,7 @@ export default function CreateTask() {
                     />
                     <hr />
                     <textarea
-                        className='add-task'
+                        className={styles.add__task}
                         type="text"
                         value={taskDescription}
                         onChange={(e) => setTaskDescription(e.target.value)}
@@ -111,8 +111,8 @@ export default function CreateTask() {
                     {responsibles.length > 0 &&
                         <div>
                             <label>Responsible</label>
-                            <ul className='responsible-user-ul'>
-                                {responsibles.map((user, index) => <li className='responsible-user-li' onClick={handleRemoveResponsibleUser} key={user.name || index}>{user.name}
+                            <ul className={styles.responsible__user__ul}>
+                                {responsibles.map((user, index) => <li className={styles.responsible__user__li} onClick={handleRemoveResponsibleUser} key={user.name || index}>{user.name}
                                 </li>)}
                             </ul>
                         </div>
@@ -120,7 +120,7 @@ export default function CreateTask() {
                     <label htmlFor="todo-date">Todo date</label>
                     <input
                         id='todo-date'
-                        className='add-task'
+                        className={styles.add__task}
                         type="date"
                         value={doDate ? doDate : toDaysDate}
                         onChange={(e) => setDoDate(e.target.value)}
@@ -131,14 +131,14 @@ export default function CreateTask() {
                     <label htmlFor="deadline-input">Deadline</label>
                     <input
                         id='deadline-input'
-                        className='add-task'
+                        className={styles.add__task}
                         type="date"
                         value={deadline}
                         onChange={(e) => setDeadline(e.target.value)}
                         min={toDaysDate}
                         max={dateplusOneYear}
                     />
-                    <button className='add-task' type='submit'>Add Task</button>
+                    <button className={styles.add__task} type='submit'>Add Task</button>
                 </form>
             }
         </div>
