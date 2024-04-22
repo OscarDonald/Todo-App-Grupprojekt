@@ -1,7 +1,6 @@
 .add__task__container {
   display: flex;
   flex-direction: column;
-  gap: 5px;
 }
 
 .add__task__btn {
@@ -16,12 +15,6 @@
   gap: 10px;
 }
 
-.add__task {
-  padding: .5rem .75rem;
-  border-radius: 5px;
-  border: none;
-}
-
 .add__task__form {
   background-color: white;
   border-radius: 5px;
@@ -29,13 +22,35 @@
   flex-direction: column;
   padding: .5rem;
   gap: .5rem;
-  position: relative;
+}
+
+.addtask__modal__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add__task__title {
+  width: 90%;  
+  border: none;
 }
 
 .closeBtn__add__task__modal {
-  position: absolute;
-  right: 5px;
+  flex: end;
   font-size: 1.5rem;
+}
+
+.add__task__description {
+  height: 4rem;
+  resize: none;
+  padding: .5rem .75rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.add__task__btn {
+  padding: .5rem .75rem;
+  border-radius: 5px;
+  border: none;
 }
 
 .closeBtn__add__task__modal:hover {

@@ -19,7 +19,7 @@ export default function CreateTask() {
 
     const dispatch = useDispatch();
     const toDaysDate = new Date().toLocaleDateString();
-    const dateplusOneYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toLocaleDateString()
+    const dateplusOneYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toLocaleDateString();
 
     // adds all local states to 'newTask' object and dispatch it to 'taskSlice'
     const createTask = (e) => {
@@ -83,18 +83,20 @@ export default function CreateTask() {
             </div>
         ) : (
             <form className={styles.add__task__form} onSubmit={(e) => createTask(e)}>
-                <i className={styles.closeBtn__add__task__modal} onClick={() => setIsShowModal(false)} ><RxCross2 /></i>
-                <input
-                    className={styles.add__task}
-                    type="text"
-                    value={taskTitle}
-                    onChange={(e) => setTaskTitle(e.target.value)}
-                    placeholder='Title'
-                    required
-                />
+                <div className={styles.addtask__modal__header}>
+                    <input
+                        className={styles.add__task__title}
+                        type="text"
+                        value={taskTitle}
+                        onChange={(e) => setTaskTitle(e.target.value)}
+                        placeholder='Title'
+                        required
+                    />
+                    <i className={styles.closeBtn__add__task__modal} onClick={() => setIsShowModal(false)} ><RxCross2 /></i>
+                </div>
                 <hr />
                 <textarea
-                    className={styles.add__task}
+                    className={styles.add__task__description}
                     type="text"
                     value={taskDescription}
                     onChange={(e) => setTaskDescription(e.target.value)}
@@ -124,7 +126,7 @@ export default function CreateTask() {
                 <label htmlFor="todo-date">Todo date</label>
                 <input
                     id='todo-date'
-                    className={styles.add__task}
+                    className={styles.add__task__btn}
                     type="date"
                     value={doDate ? doDate : toDaysDate}
                     onChange={(e) => setDoDate(e.target.value)}
@@ -135,14 +137,14 @@ export default function CreateTask() {
                 <label htmlFor="deadline-input">Deadline</label>
                 <input
                     id='deadline-input'
-                    className={styles.add__task}
+                    className={styles.add__task__btn}
                     type="date"
                     value={deadline}
                     onChange={(e) => setDeadline(e.target.value)}
                     min={toDaysDate}
                     max={dateplusOneYear}
                 />
-                <button className={styles.add__task} type='submit'>Add Task</button>
+                <button className={styles.add__task__btn} type='submit'>Add Task</button>
             </form>
         )
     )
