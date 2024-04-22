@@ -17,6 +17,12 @@ const initialState = {
     {
         isLoggedIn: false,
         id: nanoid(),
+        name: 'King Donnie',
+        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
+    },
+    {
+        isLoggedIn: false,
+        id: nanoid(),
         name: 'Nyat',
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
@@ -30,12 +36,6 @@ const initialState = {
         isLoggedIn: false,
         id: nanoid(),
         name: 'Toleen',
-        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
-    },
-    {
-        isLoggedIn: false,
-        id: nanoid(),
-        name: 'King Donnie',
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     }]
 }
