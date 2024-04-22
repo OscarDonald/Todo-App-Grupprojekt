@@ -1,9 +1,9 @@
-import './Task.css'
+import styles from './Task.module.css'
 
 // renders a task
 export default function Task({task}) {
     return (
-        <div className='task-card'>
+        <div className={`${styles.task__card}`}>
             <h4>{task.title}</h4>
             <p>{task.description}</p>
             <p>Ska göras: {task.doDate}</p>
