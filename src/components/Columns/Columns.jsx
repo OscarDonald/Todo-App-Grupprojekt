@@ -41,11 +41,11 @@ const Columns = () => {
                         <ColumnSettings column={column}/>
                     </div>
                     <div className={styles.tasks__list}>
+                        {column.id === columns[0].id && <CreateTask /> }
                         {tasks.map(task => (
                             task.column === columns.indexOf(column) &&
                             <Task task={task} key={task.id}/>
                         ))}
-                        {column.id === columns[0].id && <CreateTask /> }
                     </div>
                 </div>
             ))}

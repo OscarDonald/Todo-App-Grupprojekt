@@ -29,6 +29,18 @@
   flex-direction: column;
   padding: .5rem;
   gap: .5rem;
+  position: relative;
+}
+
+.closeBtn__add__task__modal {
+  position: absolute;
+  right: 5px;
+  font-size: 1.5rem;
+}
+
+.closeBtn__add__task__modal:hover {
+  opacity: .7;
+  cursor: pointer;
 }
 
 .responsible__user__ul {
