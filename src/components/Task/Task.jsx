@@ -1,9 +1,12 @@
 import styles from './Task.module.css'
+import {useNavigate} from 'react-router-dom'
+
 
 // renders a task
-export default function Task({task}) {
+export default function Task({ task }) {
+    const navigate = useNavigate();
     return (
-        <div className={`${styles.task__card}`}>
+        <div className='task-card'>
             <h4>{task.title}</h4>
             <p>{task.description}</p>
             <p>Ska göras: {task.doDate}</p>
