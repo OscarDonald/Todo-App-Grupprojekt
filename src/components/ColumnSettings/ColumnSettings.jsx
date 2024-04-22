@@ -8,20 +8,7 @@ import './ColumnSettings.css'
 export default function ColumnSettings({column}) {
     const dispatch = useDispatch();
     const wrapperRef = useRef(null);
-
-    const [activeColumn, setActiveColumn] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
-
-    // Function to open and close settings menu on click and only in correct column
-    const handleClick = () => {
-        if(isOpen){
-            setActiveColumn(null)
-            setIsOpen(prev => !prev)
-        } else {
-            setActiveColumn(column.id)
-            setIsOpen(prev => !prev)
-        }
-    }
     
     // Function to detect click outside menu
     // If detected modal is closed and active column reset
@@ -32,8 +19,7 @@ export default function ColumnSettings({column}) {
         useEffect(() => {
           function handleClickOutside(event) {
             if (ref.current && !ref.current.contains(event.target)) {
-              setActiveColumn(null);
-              setIsOpen(false)
+              setIsOpen(false);
             }
           }
           document.addEventListener("mousedown", handleClickOutside);
@@ -45,10 +31,10 @@ export default function ColumnSettings({column}) {
 
     return (
         <div className='settings-menu' ref={wrapperRef}>
-            <button className='settings-button' onClick={handleClick}>
+            <button className='settings-button' onClick={() => setIsOpen(prev => !prev)}>
                 <CiSettings className="settings__icon"/>
             </button>
-            {isOpen && activeColumn === column.id && (
+            {isOpen && (
                 <ul className='settings-options'>
                     <li onClick={() => dispatch(removeColumn(column.id))}>Delete list</li>
                     <li onClick={() => dispatch(moveColumn({id: column.id, direction: 'left'}))}>Move left</li>

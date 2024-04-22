@@ -28,6 +28,7 @@ export default function CreateTask() {
             doDate: doDate,
             deadline: deadline,
             responible: responsibles,
+            column: 0,
         }
         dispatch(addTask(newTask));
         resetLocalStates();

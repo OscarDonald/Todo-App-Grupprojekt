@@ -12,7 +12,7 @@ export default function Header() {
 
     // Går inte att klicka mellan knapparna då båda togglar show
     // Går inte att stänga genom att klicka utanför
-    const handleClick = (mode) => {
+    const handleClick = (e, mode) => {
         setMode(mode);
         setIsOpen(prev => !prev)
     }
@@ -31,9 +31,9 @@ export default function Header() {
                         </li>
                         <li 
                             className="header__li"
-                            onClick={() => handleClick('profile')}
+                            onClick={(e) => handleClick(e, 'profile')}
                         >
-                            <FaRegArrowAltCircleDown className="header__icons arrow"/>
+                            <FaRegArrowAltCircleDown className="header__icons arrow" style={{rotate: mode === 'profile' && isOpen ? '90deg' : '0deg'}}/>
                         </li>
                     </ul>
                 </nav>

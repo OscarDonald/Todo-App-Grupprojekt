@@ -47,12 +47,11 @@ USER DROPDOWN
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: .8rem .6rem;
-    
     margin: 10px;
     transition: 0.2s;
     border-radius: .5rem;
+    cursor:pointer;
 }
 .dropdown__user:hover {
     scale: 1.025;

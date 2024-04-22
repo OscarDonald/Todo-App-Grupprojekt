@@ -12,14 +12,17 @@ const Dropdown = ({mode}) => {
     const {users} = useSelector(state => state.users)
     const dispatch = useDispatch();
 
+    // Förhindra uppdatering
+    // Lägg till användarnamn till users
+    // Nollställ state
     const handleNewUser = (e) => {
         e.preventDefault();
         dispatch(addUser(username))
         setUsername('');
     }
 
-    
 
+    // Returnerar dropdown meny med conditional rendering för innehåll beroende på om man klickat på 'lägg till användare'
   return (
     <div className="dropdown">
         {mode === 'add' ? (
