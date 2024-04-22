@@ -3,6 +3,7 @@ import { removeColumn, moveColumn, copyColumn } from "../../feature/columnSlice/
 import { useDispatch } from "react-redux";
 import { CiSettings } from "react-icons/ci";
 import './ColumnSettings.css'
+import { Link } from "react-router-dom";
 
 // returns a button for 'settings' if its klicked a menu shows with 'delete list', 'move right/left', 'copy list' 
 export default function ColumnSettings({column}) {
@@ -40,6 +41,7 @@ export default function ColumnSettings({column}) {
                     <li onClick={() => dispatch(moveColumn({id: column.id, direction: 'left'}))}>Move left</li>
                     <li onClick={() => dispatch(moveColumn({id: column.id, direction: 'right'}))}>Move right</li>
                     <li onClick={() => dispatch(copyColumn(column.id))}>Copy list</li>
+                    <Link to={"/listview"} style={{textDecoration: "none", color:"black"}}><li>ListView</li></Link>
                 </ul>
             )}
         </div>
