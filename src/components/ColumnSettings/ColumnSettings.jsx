@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { CiSettings } from "react-icons/ci";
 import './ColumnSettings.css'
 
-
+// returns a button for 'settings' if its klicked a menu shows with 'delete list', 'move right/left', 'copy list' 
 export default function ColumnSettings({column}) {
     const dispatch = useDispatch();
     const wrapperRef = useRef(null);

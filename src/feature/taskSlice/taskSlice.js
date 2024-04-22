@@ -1,5 +1,6 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
+// dummy data
 const initialState = {
     tasks: [
         {
@@ -35,6 +36,7 @@ export const taskSlice = createSlice({
     name: 'task',
     initialState,
     reducers: {
+        // Creates a new task object and adds it task state
         addTask: (state, action) => {
             const task = {
                 ...action.payload,
@@ -42,6 +44,7 @@ export const taskSlice = createSlice({
             }
             state.tasks.push(task);
         },
+        // Filters tasks state to remove chosen task by id
         removeTask: (state, action) => {
             state.tasks = state.tasks.filter((task) => task.id !== action.payload);
         }
