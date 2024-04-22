@@ -1,7 +1,7 @@
 import ColumnSettings from '../ColumnSettings/ColumnSettings';
 import CreateTask from '../createTask/CreateTask';
 import Task from '../Task/Task';
-import './Columns.css';
+import styles from "./Columns.module.css"
 import { useState } from 'react';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
 import { addColumn, updateTitle } from '../../feature/columnSlice/columnSlice';
@@ -21,10 +21,10 @@ const Columns = () => {
     // När vi sen gör tasks så kan vi lägga till tasks.column som ID:t av första kolumen.
     // La till else return i move-funktionen för att förhindra att kolumnerna flyttades för långt
     return (
-        <div className='main'>
+        <div className={styles.main}>
             {columns.map(column => (
-                <div className='tasks-column' key={column.id}>
-                    <div className='column-header-container'>
+                <div className={styles.tasks__column} key={column.id}>
+                    <div className={styles.column__header__container}>
                         {editableColumn === column.id ? (
                             <input
                                 type='text'
@@ -34,13 +34,13 @@ const Columns = () => {
                                 onBlur={() => setEditableColumn(null)} // Call handleTitleEditFinish on blur
                             />
                         ) : (
-                            <h2 className='column-header' onClick={() => setEditableColumn(column.id)}>
+                            <h2 className={styles.column__header} onClick={() => setEditableColumn(column.id)}>
                                 {column.title}
                             </h2>
                         )}
                         <ColumnSettings column={column}/>
                     </div>
-                    <div className='tasks-list'>
+                    <div className={styles.tasks__list}>
                         {tasks.map(task => (
                             task.column === columns.indexOf(column) &&
                             <Task task={task} key={task.id}/>
@@ -49,7 +49,7 @@ const Columns = () => {
                     </div>
                 </div>
             ))}
-            <button className='add-column-button' onClick={() => dispatch(addColumn())}>
+            <button className={styles.add__column__button} onClick={() => dispatch(addColumn())}>
                 Add a list
             </button>
         </div>
