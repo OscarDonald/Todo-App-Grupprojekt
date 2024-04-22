@@ -40,7 +40,6 @@ const Dropdown = ({mode}) => {
         ) : (
             <>
                 {users.map(user => (
-                    
                     <div 
                         key={user.id}
                         onClick={() => dispatch(chooseUser(user.id))}
