@@ -1,10 +1,10 @@
-.add-task-container {
+.add__task__container {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.add-task-btn {
+.add__task__btn {
   height: 40px;
   font-size: 1rem;
   padding: .5rem .75rem;
@@ -16,13 +16,13 @@
   gap: 10px;
 }
 
-.add-task {
+.add__task {
   padding: .5rem .75rem;
   border-radius: 5px;
   border: none;
 }
 
-.add-task-form {
+.add__task__form {
   background-color: white;
   border-radius: 5px;
   display: flex;
@@ -31,13 +31,13 @@
   gap: .5rem;
 }
 
-.responsible-user-ul {
+.responsible__user__ul {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
 
-.responsible-user-li {
+.responsible__user__li {
   list-style: none;
   border: 1px solid;
   border-radius: .5rem;
