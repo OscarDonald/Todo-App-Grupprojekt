@@ -9,6 +9,6 @@
 body {
   background-image: url(../image/mountain-background.jpg);
   background-size: cover;
-  background-position: center;
+  /* background-position: center; */
   overflow: auto;
 }
