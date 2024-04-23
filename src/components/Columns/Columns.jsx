@@ -2,6 +2,7 @@ import ColumnSettings from '../ColumnSettings/ColumnSettings';
 import CreateTask from '../createTask/CreateTask';
 import Task from '../Task/Task';
 import styles from "./Columns.module.css"
+import styles from "./Columns.module.css"
 import { useState } from 'react';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
 import { addColumn, updateTitle } from '../../feature/columnSlice/columnSlice';
@@ -43,11 +44,11 @@ const Columns = () => {
                         <ColumnSettings column={column}/>
                     </div>
                     <div className={styles.tasks__list}>
-                        {tasks.map(task => (
-                            task.column === columns.indexOf(column) &&
-                            <Task task={task} key={task.id} setShow={setShow} />
-                        ))}
                         {column.id === columns[0].id && <CreateTask /> }
+                        {tasks.map(task => (
+                            task.columnId === column.id &&
+                            <Task task={task} key={task.id}/>
+                        ))}
                     </div>
                 </div>
             ))}

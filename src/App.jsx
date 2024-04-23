@@ -12,8 +12,7 @@ const router = createBrowserRouter([
       {
         path: '/:id',
         element: null
-      }
-    ]
+      }]
   },
   {
     path: '/listview',
