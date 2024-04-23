@@ -1,38 +1,47 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux'; 
 
-function Example() {
-    const [show, setShow] = useState(false);
+function TaskModal({show, setShow}) {
+    const [taskData, setTaskData] = useState(null);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+    const { tasks } = useSelector((state) => state.tasks);
+    const { id } = useParams();
+
+    useEffect(() => {
+        const task = tasks.find(task => task.id == id)
+        setTaskData(task);
+    }, [id]);
+    
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button>
-
-            <Modal show={show} onHide={handleClose}>
+            {taskData && <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    // task titel
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>{taskData.title}</Modal.Title>
                 </Modal.Header>
-                // task beskrivning + allt annat
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+                    <p>{taskData.description}</p>
+                    <p>Ska göras: {taskData.doDate}</p>
+                    <p>Deadline: {taskData.deadline}</p>
+                    <p>Ansvariga: {taskData.responible.map(user => user.name + ' ')}</p>
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Edit
                     </Button>
-                    // spara ändringar som gjorts i modalen till dess task
                     <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                        Delete Task
                     </Button>
                 </Modal.Footer>
-            </Modal>
+            </Modal>}
+            
         </>
     );
 }
 
-export default Example;
+export default TaskModal;
