@@ -5,6 +5,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
 import styles from "./createTask.module.css";
 
+
 // returns a 'add task' button
 // if its klicked a form to creat a tasks displays
 export default function CreateTask() {
@@ -16,6 +17,7 @@ export default function CreateTask() {
     const [deadline, setDeadline] = useState('');
     const { users } = useSelector(state => state.users);
     const [availableUsers, setAvailableUsers] = useState(users);
+    const { columns } = useSelector((state) => state.columns)
 
     const dispatch = useDispatch();
     const toDaysDate = new Date().toLocaleDateString();
@@ -30,12 +32,13 @@ export default function CreateTask() {
             doDate: doDate,
             deadline: deadline,
             responsible: responsibles,
-            column: 0,
+            columnId: columns[0].id,
         }
         dispatch(addTask(newTask));
         resetLocalStates();
     }
 
+    
     // resets all local states to its inizial values
     const resetLocalStates = () => {
         setTaskTitle('');

@@ -25,11 +25,11 @@ const ListView = () => {
             <Link to={"/"} style={{ textDecoration: "none", color: "black" }}> <li style={{ listStyle: 'none' }}><h3>Gå tillbaka</h3></li></Link>
 
             <div className={styles.listview__container}>
-                <div className={styles.listview__tasks}>
+                
                     {listviewTasks.map(task => (
-                        <Task task={task} key={task.id} />
+                        <Task task={task} key={task.id} cssClassname={true} />
                     ))}
-                </div>
+                
 
             </div>
         </>
