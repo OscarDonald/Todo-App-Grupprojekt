@@ -1,0 +1,19 @@
+.listview__container {
+    display: flex;
+    margin: 0 auto;
+    background-color: #e2e2e27c;
+    backdrop-filter: blur(2px);
+    width: 50vw;
+    height: 60vh;
+    border-radius: 1rem;
+}
+
+.task__card {
+    border-radius: .5rem;
+    padding: .75rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}

@@ -29,7 +29,7 @@ export default function CreateTask() {
             description: taskDescription,
             doDate: doDate,
             deadline: deadline,
-            responible: responsibles,
+            responsible: responsibles,
             column: 0,
         }
         dispatch(addTask(newTask));
@@ -105,7 +105,7 @@ export default function CreateTask() {
                     rows={10}
                 />
                 <select onChange={(e) => handleResponsibles(e.target.value)}>
-                    <option>select a responible user</option>
+                    <option>select a responsible user</option>
                     {availableUsers && availableUsers.map((user) =>
                         <option
                             key={user.id}
