@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addTask } from '../../feature/taskSlice/taskSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { addTask } from '../../feature/taskSlice/taskSlice';
 import styles from "./createTask.module.css";
+
 
 // returns a 'add task' button
 // if its klicked a form to creat a tasks displays
 export default function CreateTask() {
     const [isShowModal, setIsShowModal] = useState(false);
     const [taskTitle, setTaskTitle] = useState('');
-    const [taskDescription, setTaskDescription] = useState();
+    const [taskDescription, setTaskDescription] = useState('');
+    // RÄTTA STAVFELET PÅ RESPONIBLE NÄR ALLT FUNKAR :) 
     const [responsibles, setResponsibles] = useState([]);
     const [doDate, setDoDate] = useState('');
     const [deadline, setDeadline] = useState('');
@@ -69,14 +71,12 @@ export default function CreateTask() {
         const upadatedResponsibles = responsibles.filter((user) => user.name !== userName);
         setResponsibles(upadatedResponsibles);
     }
-
     return (
         <div className={styles.add__task__container}>
             <button
                 className={styles.add__task__btn}
                 onClick={() => {
                     setIsShowModal(prev => !prev);
-                    setAvailableUsers(users);
                 }} ><AiOutlinePlusCircle />Add Task</button>
             {isShowModal &&
                 <form className={styles.add__task__form} onSubmit={(e) => createTask(e)}>

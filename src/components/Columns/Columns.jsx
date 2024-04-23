@@ -6,12 +6,14 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
 import { addColumn, updateTitle } from '../../feature/columnSlice/columnSlice';
 import { useDispatch } from 'react-redux';
+import TaskModal from '../Modal/Modal'; 
 
 const Columns = () => {
     const dispatch = useDispatch();
     const { columns } = useSelector((state) => state.columns);
     const { tasks } = useSelector((state) => state.tasks);
-    const [editableColumn, setEditableColumn] = useState(null);
+  const [editableColumn, setEditableColumn] = useState(null);
+  const [show, setShow] = useState(false);
 
     // ÄNDRINGAR 
     // Update title utflyttad till slice
@@ -43,7 +45,7 @@ const Columns = () => {
                     <div className={styles.tasks__list}>
                         {tasks.map(task => (
                             task.column === columns.indexOf(column) &&
-                            <Task task={task} key={task.id} />
+                            <Task task={task} key={task.id} setShow={setShow} />
                         ))}
                         {column.id === columns[0].id && <CreateTask /> }
                     </div>
@@ -51,7 +53,8 @@ const Columns = () => {
             ))}
             <button className={styles.add__column__button} onClick={() => dispatch(addColumn())}>
                 Add a list
-            </button>
+        </button>
+        <TaskModal show={show} setShow={setShow} />
         </div>
     );
 }

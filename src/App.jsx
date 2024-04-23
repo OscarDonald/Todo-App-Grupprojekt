@@ -8,7 +8,12 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Columns />,
-    // children: []
+    children: [
+      {
+        path: '/:id',
+        element: null
+      }
+    ]
   },
   {
     path: '/listview',
