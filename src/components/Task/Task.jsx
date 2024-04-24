@@ -16,5 +16,5 @@ export default function Task({task}) {
             <p>Deadline: {task.deadline}</p>
             <p>Ansvariga: {task.responible.map(user => user.name + ' ')}</p>
         </div>
-    )
+    );
 }
