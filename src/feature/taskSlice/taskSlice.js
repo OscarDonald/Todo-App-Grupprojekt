@@ -50,9 +50,12 @@ export const taskSlice = createSlice({
         },
         updateTask: (state, action) => {
             state.tasks = action.payload
+        },
+        editTask: (state, action) => {
+            state.tasks = state.tasks.map(task => task.id === action.payload.id ? action.payload : task);
         }
     }
 })
 
-export const { addTask, removeTask, updateTask } = taskSlice.actions; // reducer funcionerna i taskSlice som expoteras
+export const { addTask, removeTask, updateTask, editTask } = taskSlice.actions; // reducer funcionerna i taskSlice som expoteras
 export default taskSlice.reducer;
