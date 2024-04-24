@@ -47,9 +47,12 @@ export const taskSlice = createSlice({
         // Filters tasks state to remove chosen task by id
         removeTask: (state, action) => {
             state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+        },
+        updateTask: (state, action) => {
+            state.tasks = action.payload
         }
     }
 })
 
-export const { addTask, removeTask } = taskSlice.actions; // reducer funcionerna i taskSlice som expoteras
+export const { addTask, removeTask, updateTask } = taskSlice.actions; // reducer funcionerna i taskSlice som expoteras
 export default taskSlice.reducer;
