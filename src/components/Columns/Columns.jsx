@@ -13,6 +13,19 @@ const Columns = () => {
     const { tasks } = useSelector((state) => state.tasks);
     const [editableColumn, setEditableColumn] = useState(null);
 
+    // Handledrop function
+    function handleDrop(e,title) {
+        e.preventDefault();
+        const id = e.dataTransfer.getData('id').toString();
+        const task = tasks.find(task => task.id === id);
+        const newColummnId = titles.indexOf(title);
+        const updatedTask = { ...task, columnId: newColummnId }
+        const updatedTasks = tasks.map(task => {
+            return task.id === updatedTask.id ? updatedTask : task;
+        });
+        setTasks(updatedTasks);
+    }
+
     // ÄNDRINGAR 
     // Update title utflyttad till slice
     // handleFinishEdit borttagen och utbytt mot setEditableColumn
@@ -21,7 +34,12 @@ const Columns = () => {
     // När vi sen gör tasks så kan vi lägga till tasks.column som ID:t av första kolumen.
     // La till else return i move-funktionen för att förhindra att kolumnerna flyttades för långt
     return (
-        <div className={styles.main}>
+        
+        <div className={styles.main}
+            onDragOver={(e) => { e.preventDefault() }}
+            onDrop={(e) => {handleDrop(e,title)}}
+        >
+            
             {columns.map(column => (
                 <div className={styles.tasks__column} key={column.id}>
                     <div className={styles.column__header__container}>
