@@ -52,7 +52,7 @@ const Columns = () => {
                                 onBlur={() => setEditableColumn(null)} // Call handleTitleEditFinish on blur
                             />
                         ) : (
-                            <h2 className={styles.column__header} onClick={() => setEditableColumn(column.id)}>
+                            <h2 className={styles.column__header} onDoubleClick={() => setEditableColumn(column.id)}>
                                 {column.title}
                             </h2>
                         )}
@@ -61,7 +61,7 @@ const Columns = () => {
                     <div className={styles.tasks__list}>
                         {column.id === columns[0].id && <CreateTask /> }
                         {tasks.map(task => (
-                            task.column === columns.indexOf(column) &&
+                            task.columnId === column.id &&
                             <Task task={task} key={task.id}/>
                         ))}
                     </div>

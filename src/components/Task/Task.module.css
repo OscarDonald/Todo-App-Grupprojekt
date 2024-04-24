@@ -7,3 +7,13 @@
     align-items: start;
     gap: 5px;
 }
+
+.listview__tasks {
+    border-radius: .5rem;
+    padding: .75rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 20px;
+}
