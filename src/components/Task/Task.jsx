@@ -9,7 +9,8 @@ export default function Task({ task, cssClassname }) {
         <div
             // Drag and Drop-function
             draggable
-            onDragStart={(e) => { e.dataTransfer.setData('id', task.id) }}
+            onDragStart={(e) => { e.dataTransfer.setData('id', task.id) }} // transporterar key('id) med value (task.id)
+            //
             className={cssClassname ? `${styles.listview__tasks}` : `${styles.task__card}`}>
             <div className={styles.listview__container__left}>
                 {task.title && <h4>{task.title}</h4>}

@@ -5,6 +5,7 @@ import styles from "./Columns.module.css"
 import { useState } from 'react';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
 import { addColumn, updateTitle } from '../../feature/columnSlice/columnSlice';
+import { updateTask } from '../../feature/taskSlice/taskSlice';
 import { useDispatch } from 'react-redux';
 
 const Columns = () => {
@@ -14,16 +15,22 @@ const Columns = () => {
     const [editableColumn, setEditableColumn] = useState(null);
 
     // Handledrop function
-    function handleDrop(e,title) {
+    // Fetches data with key as id
+    // Finds the task that has the same id as task.id
+    // Updates the moved task with new columnId
+    // If task.id is equal to the updated task.id, it sends the updated version of the task; otherwise, 
+    //it just sends the task, which means the task that does not match task.id has not moved.
+
+    function handleDrop(e, columnId) {
         e.preventDefault();
-        const id = e.dataTransfer.getData('id').toString();
+        const id = e.dataTransfer.getData('id'); 
         const task = tasks.find(task => task.id === id);
-        const newColummnId = titles.indexOf(title);
-        const updatedTask = { ...task, columnId: newColummnId }
+        const updatedTask = { ...task, columnId}
         const updatedTasks = tasks.map(task => {
             return task.id === updatedTask.id ? updatedTask : task;
         });
-        setTasks(updatedTasks);
+
+        dispatch(updateTask(updatedTasks));
     }
 
     // ÄNDRINGAR 
@@ -36,12 +43,14 @@ const Columns = () => {
     return (
         
         <div className={styles.main}
-            onDragOver={(e) => { e.preventDefault() }}
-            onDrop={(e) => {handleDrop(e,title)}}
+            
         >
             
             {columns.map(column => (
-                <div className={styles.tasks__column} key={column.id}>
+                <div
+                    onDragOver={(e) => { e.preventDefault() }}
+                    onDrop={(e) => {handleDrop(e, column.id)}}
+                    className={styles.tasks__column} key={column.id}>
                     <div className={styles.column__header__container}>
                         {editableColumn === column.id ? (
                             <input
