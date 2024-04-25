@@ -28,9 +28,7 @@ export default function Header() {
             <div className={styles.header__nav__container}>
                 <nav className={styles.header__nav}>
                     <ul className={styles.header__ul}>
-                        <button className={styles.add__column__button} onClick={() => dispatch(addColumn())}>
-                        Add a list
-                    </button>
+                    
                         <li 
                             className={styles.header__li}
                             onClick={() => handleClick('add')}
@@ -43,6 +41,9 @@ export default function Header() {
                         >
                             <FaRegArrowAltCircleDown className={`${styles.header__icons} ${styles.arrow}`}  style={{rotate: mode === 'profile' && isOpen ? '90deg' : '0deg'}}/>
                         </li>
+                        <button className={styles.add__column__button} onClick={() => dispatch(addColumn())}>
+                        Add a list
+                    </button>
                     </ul>
                 </nav>
                 {isOpen && <Dropdown mode={mode}/>}
