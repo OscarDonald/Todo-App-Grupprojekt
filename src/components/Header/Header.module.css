@@ -1,45 +1,53 @@
 header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header__title {
-    color: white;
-    font-size: 3.5rem;
-    margin: 0 auto;
-    margin-bottom: 30px;
+  color: white;
+  font-size: 3.5rem;
+  margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 .header__nav__container {
-    position: relative;
-    bottom: 10px;
+  position: relative;
+  bottom: 10px;
 }
 
 .header__ul {
-    list-style-type: none;
-    display: flex;
-    gap: 10px;
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
 }
 
 .header__li {
-    /* Oklar storlek på li-element utan denna */
-    /* 4extra px som 'padding' på botten av elementet som inte går bort */
-    height: 35px;
+  /* Oklar storlek på li-element utan denna */
+  /* 4extra px som 'padding' på botten av elementet som inte går bort */
+  height: 35px;
 }
 
-.header__icons{
-    font-size: 35px;
-    color: #ffffff;
-    transition: all .20s;
-    cursor: pointer;
+.header__icons {
+  font-size: 35px;
+  color: #ffffff;
+  transition: all 0.2s;
+  cursor: pointer;
 }
 
-.header__icons:hover{
-    font-size: 35px;
-    color: #686868;
+.header__icons:hover {
+  font-size: 35px;
+  color: #686868;
 }
 
-.add:hover{
-    rotate: 180deg;
+.add:hover {
+  rotate: 180deg;
+}
+
+.add__column__button {
+  border: none;
+  background-color: #0275d8;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 12px;
 }

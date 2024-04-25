@@ -21,7 +21,6 @@ const Columns = () => {
     // Updates the moved task with new columnId
     // If task.id is equal to the updated task.id, it sends the updated version of the task; otherwise, 
     //it just sends the task, which means the task that does not match task.id has not moved.
-
     function handleDrop(e, columnId) {
         e.preventDefault();
         const id = e.dataTransfer.getData('id'); 
@@ -74,9 +73,7 @@ const Columns = () => {
                     </div>
                 </div>
             ))}
-            <button className={styles.add__column__button} onClick={() => dispatch(addColumn())}>
-                Add a list
-            </button>
+         
             <TaskModal />
         </div>
     );

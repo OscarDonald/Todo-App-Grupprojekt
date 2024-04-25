@@ -53,16 +53,6 @@ function TaskModal() {
         setAvailableUsers(users);
     }
 
-
-
-
-
-
-
-
-
-
-
     useEffect(() => {
         const task = tasks.find(task => task.id == id)
         if(task){
@@ -127,11 +117,6 @@ function TaskModal() {
                                 onChange={(e) => setTaskDescription(e.target.value)}
                             />
 
-
-
-
-
-
                             <select onChange={(e) => handleResponsibles(e.target.value)}>
                                 <option>select a responsible user</option>
                                 {availableUsers && availableUsers.map((user) =>
@@ -168,15 +153,6 @@ function TaskModal() {
                                 min={toDaysDate}
                                 max={dateplusOneYear}
                             />
-
-
-
-
-
-
-
-
-
                         </>
                     ) : (
                         <>
