@@ -5,37 +5,43 @@ const initialState = {
     {
         isLoggedIn: true,
         id: nanoid(),
-        name: 'Jens',
+        name: 'Jens Bengtsson',
+        initials: "JB",
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
     {
         isLoggedIn: false,
         id: nanoid(),
-        name: 'Emil',
+        name: 'Emil Winberg',
+        initials: "EW",
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
     {
         isLoggedIn: false,
         id: nanoid(),
-        name: 'King Donnie',
+        name: 'Oscar Donaldson',
+        initials: "OD",
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
     {
         isLoggedIn: false,
         id: nanoid(),
-        name: 'Nyat',
+        name: 'Nyat Ghirmazion',
+        initials: "NG",
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
     {
         isLoggedIn: false,
         id: nanoid(),
-        name: 'David',
+        name: 'David Heidari',
+        initials: "DH",
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
     {
         isLoggedIn: false,
         id: nanoid(),
-        name: 'Toleen',
+        name: 'Toleen Alrifai',
+        initials: "TA",
         tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     }]
 }
@@ -48,7 +54,8 @@ export const userSlice = createSlice({
             const newUser = {
                 isLoggedIn: false,
                 id: nanoid(),
-                name: action.payload,
+                name: action.payload.name,
+                initials: action.payload.initials,
                 tasks: []
             }
             state.users.push(newUser);

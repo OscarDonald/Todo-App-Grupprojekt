@@ -36,23 +36,38 @@
 }
 
 .listview__tasks .listview__column__title__container {
-    background-color: #808080a7;
+    background-color: #e07b7ba7;
     border-radius: .5rem;
     padding: .3rem;
-    height: fit-content;
+}
+.listview__tasks .column__done {
+    background-color: rgb(142, 255, 161);
+}
+.listview__tasks .column__todo {
+    background-color: rgb(160, 205, 255);
+}
+
+.listview__tasks .column__doing {
+    background-color: rgb(235, 233, 160);
+}
+
+
+.listview__tasks .listview__column__title__container p {
+    margin: 0;
 }
 
 .listview__tasks .listview__responsible__container {
+    width: fit-content;
     display: flex;
-    border-radius: .5rem;
-    padding: .3rem;
-    font-size: .6rem;
-    gap: .3rem;
+    align-items: center;
+    gap: .5rem;
 }
 
 .listview__tasks .listview__responsible {
-    width: fit-content;
-    padding: 2px 4px;
-    border-radius: .5rem;
-    background-color: aliceblue;
+    margin-top: 16px;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: rgb(247, 154, 170);
 }
+
