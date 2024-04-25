@@ -1,6 +1,7 @@
 import ColumnSettings from '../ColumnSettings/ColumnSettings';
 import CreateTask from '../createTask/CreateTask';
 import Task from '../Task/Task';
+import TaskModal from '../TaskModal/TaskModal';
 import styles from "./Columns.module.css"
 import { useState } from 'react';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management
@@ -41,10 +42,7 @@ const Columns = () => {
     // La till else return i move-funktionen för att förhindra att kolumnerna flyttades för långt
     return (
         
-        <div className={styles.main}
-            
-        >
-            
+        <div className={styles.main}>
             {columns.map(column => (
                 <div
                     onDragOver={(e) => { e.preventDefault() }}
@@ -78,6 +76,7 @@ const Columns = () => {
             <button className={styles.add__column__button} onClick={() => dispatch(addColumn())}>
                 Add a list
             </button>
+            <TaskModal />
         </div>
     );
 }

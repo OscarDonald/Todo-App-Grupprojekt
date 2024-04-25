@@ -10,7 +10,7 @@ const initialState = {
             doDate: '2026-09-16',
             deadline: '2027-10-12',
             responsible: [],
-            column: 0
+            columnId: 1
         },
         {
             id: '2',
@@ -19,7 +19,7 @@ const initialState = {
             doDate: '2024-03-17',
             deadline: '2025-07-28',
             responsible: [],
-            column: 1
+            columnId: 2
         },
         {
             id: '3',
@@ -28,7 +28,7 @@ const initialState = {
             doDate: '2024-04-27',
             deadline: '2024-06-07',
             responsible: [],
-            column: 2
+            columnId: 3
         }],
 }
 
@@ -50,9 +50,12 @@ export const taskSlice = createSlice({
         },
         updateTask: (state, action) => {
             state.tasks = action.payload
+        },
+        editTask: (state, action) => {
+            state.tasks = state.tasks.map(task => task.id === action.payload.id ? action.payload : task);
         }
     }
 })
 
-export const { addTask, removeTask, updateTask } = taskSlice.actions; // reducer funcionerna i taskSlice som expoteras
+export const { addTask, removeTask, updateTask, editTask } = taskSlice.actions; // reducer funcionerna i taskSlice som expoteras
 export default taskSlice.reducer;

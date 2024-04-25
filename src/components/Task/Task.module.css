@@ -8,12 +8,51 @@
     gap: 5px;
 }
 
+/* listview */
+
 .listview__tasks {
     border-radius: .5rem;
-    padding: .75rem;
+    padding: .5rem;
     background-color: white;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 2px 2px 3px rgb(155, 155, 155);
+}
+
+.listview__tasks .listview__deadline {
+    font-size: .7rem;
+    color: rgb(84, 84, 84);
+}
+.listview__tasks .listview__container__left {
     display: flex;
     flex-direction: column;
     align-items: start;
-    margin: 20px;
+}
+
+.listview__tasks .listview__container__right {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.listview__tasks .listview__column__title__container {
+    background-color: #808080a7;
+    border-radius: .5rem;
+    padding: .3rem;
+    height: fit-content;
+}
+
+.listview__tasks .listview__responsible__container {
+    display: flex;
+    border-radius: .5rem;
+    padding: .3rem;
+    font-size: .6rem;
+    gap: .3rem;
+}
+
+.listview__tasks .listview__responsible {
+    width: fit-content;
+    padding: 2px 4px;
+    border-radius: .5rem;
+    background-color: aliceblue;
 }
