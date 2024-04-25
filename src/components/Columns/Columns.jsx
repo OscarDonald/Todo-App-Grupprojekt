@@ -73,9 +73,7 @@ const Columns = () => {
                     </div>
                 </div>
             ))}
-            <button className={styles.add__column__button} onClick={() => dispatch(addColumn())}>
-                Add a list
-            </button>
+         
             <TaskModal />
         </div>
     );
