@@ -1,4 +1,5 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 
 const initialState = {
     columns: [
@@ -35,7 +36,8 @@ export const columnSlice = createSlice({
         },
         // Filters the columns state to remove chosen column by ID
         removeColumn: (state, action) => {
-            state.columns = state.columns.filter((column) => column.id !== action.payload);
+            state.columns = state.columns.filter((column) =>
+                column.id !== action.payload);
         },
         //Copies column name and tasks but has unique ID
         copyColumn: (state, action) => {
