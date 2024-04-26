@@ -8,11 +8,17 @@
   font-size: 1rem;
   padding: .5rem .75rem;
   border-radius: 5px;
+  background-color: #0275d8;
+  color: white;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.add__task__btn:hover {
+  background-color: darkblue;
 }
 
 .add__task__form {

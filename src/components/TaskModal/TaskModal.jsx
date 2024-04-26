@@ -73,10 +73,13 @@ function TaskModal() {
     };
 
     const handleDelete = () => {
-        dispatch(removeTask(taskData.id))
-        handleClose();
-        resetLocalStates();
-    }
+        const isConfirmed = window.confirm("Are you sure you want to delete this task?");
+        if (isConfirmed) {
+            dispatch(removeTask(taskData.id));
+            handleClose();
+            resetLocalStates();
+        }
+    }    
 
     const handleEdit = () => {
         setIsEditing(prev => !prev);
@@ -172,12 +175,12 @@ function TaskModal() {
                         </Button>
 
                     ):(
-                        <Button variant="secondary" onClick={handleEdit}>
+                        <Button variant= "primary" onClick={handleEdit}>
                             Edit
                         </Button>
                     )}
 
-                    <Button variant="primary" onClick={handleDelete}>
+                    <Button variant="secondary" onClick={handleDelete}>
                         Delete Task
                     </Button>
                 </Modal.Footer>

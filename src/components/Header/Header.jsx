@@ -41,9 +41,6 @@ export default function Header() {
                         >
                             <FaRegArrowAltCircleDown className={`${styles.header__icons} ${styles.arrow}`}  style={{rotate: mode === 'profile' && isOpen ? '90deg' : '0deg'}}/>
                         </li>
-                        <button className={styles.add__column__button} onClick={() => dispatch(addColumn())}>
-                        Add a list
-                    </button>
                     </ul>
                 </nav>
                 {isOpen && <Dropdown mode={mode}/>}
