@@ -3,7 +3,8 @@
     flex-direction: column;
     gap: .5rem;
     margin: 0 auto;
-    padding: .5rem;
+    padding: 1rem;
+    padding-top: 8px;
     background-color: #e2e2e27c;
     backdrop-filter: blur(2px);
     width: 50vw;
@@ -11,3 +12,7 @@
     border-radius: 1rem;
 }
 
+.listview__return__btn{
+    color: white;
+    display: flex;
+}
