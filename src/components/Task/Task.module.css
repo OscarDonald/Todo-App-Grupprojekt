@@ -10,6 +10,7 @@
 
 /* listview */
 
+
 .listview__tasks {
     border-radius: .5rem;
     padding: .5rem;
@@ -18,6 +19,7 @@
     justify-content: space-between;
     box-shadow: 2px 2px 3px rgb(155, 155, 155);
 }
+
 
 .listview__tasks .listview__deadline {
     font-size: .7rem;
@@ -36,7 +38,6 @@
 }
 
 .listview__tasks .listview__column__title__container {
-    background-color: #e07b7ba7;
     border-radius: .5rem;
     padding: .3rem;
 }
@@ -49,6 +50,10 @@
 
 .listview__tasks .column__doing {
     background-color: rgb(235, 233, 160);
+}
+
+.listview__tasks .column__default {
+    background-color: #e07b7ba7;
 }
 
 

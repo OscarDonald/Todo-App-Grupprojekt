@@ -1,7 +1,8 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 
 const initialState = {
-    columns: [
+    columns: JSON.parse(localStorage.getItem('columns')) || [
         { 
             id: 1, 
             title: 'Todo',
@@ -17,7 +18,7 @@ const initialState = {
             title: 'Done',
             tasks: [],
         },
-    ],
+    ]
 }
 
 export const columnSlice = createSlice({
@@ -32,15 +33,19 @@ export const columnSlice = createSlice({
                 tasks: [],
             }
             state.columns.push(column);
+            localStorage.setItem('columns', JSON.stringify(state.columns));
         },
         // Filters the columns state to remove chosen column by ID
         removeColumn: (state, action) => {
-            state.columns = state.columns.filter((column) => column.id !== action.payload);
+            const removeColumn = state.columns.filter((column) => column.id !== action.payload);
+            state.columns = removeColumn
+            localStorage.setItem('columns', JSON.stringify(state.columns));
         },
         //Copies column name and tasks but has unique ID
         copyColumn: (state, action) => {
             const columnToCopy = state.columns.find(column => column.id === action.payload);
             state.columns.push({...columnToCopy, id: nanoid()});
+            localStorage.setItem('columns', JSON.stringify(state.columns));
         },
         // Creates new columns array
         // Finds chosen column object and index
@@ -51,7 +56,7 @@ export const columnSlice = createSlice({
             const newColumns = [...state.columns];
             const columnIndex = state.columns.findIndex(column => column.id === action.payload.id);
             const columnToMove = newColumns.splice(columnIndex, 1)[0];
-
+            
             if (action.payload.direction === 'left' && columnIndex !== 0) {
                 newColumns.splice(columnIndex - 1, 0, columnToMove);
             } else if (action.payload.direction === 'right' && columnIndex !== state.columns.length - 1) {
@@ -59,6 +64,7 @@ export const columnSlice = createSlice({
             }
             else return
             state.columns = newColumns;
+            localStorage.setItem('columns', JSON.stringify(state.columns));
         },
         // Go through columns-array and swap updated object
         // Set state
@@ -67,6 +73,7 @@ export const columnSlice = createSlice({
                 column.id === action.payload.id ? {...column, title: action.payload.title } : column
             ));
             state.columns = updatedColumns;
+            localStorage.setItem('columns', JSON.stringify(state.columns));
         }
     }
 })

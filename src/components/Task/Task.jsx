@@ -18,7 +18,7 @@ export default function Task({ task, cssClassname }) {
             case "Done":
                 return styles.column__done;
             default:
-                return "";
+                return styles.column__default;
         }
     }
 
