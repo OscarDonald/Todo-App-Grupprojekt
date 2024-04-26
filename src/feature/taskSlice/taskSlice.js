@@ -1,8 +1,9 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { json } from 'react-router-dom';
 
 // dummy data
 const initialState = {
-    tasks: [
+    tasks: JSON.parse(localStorage.getItem('tasks')) || [
         {
             id: '1',
             title: 'Vattna blommorna',
@@ -23,7 +24,7 @@ const initialState = {
         },
         {
             id: '3',
-            title: 'äta',
+            title: 'Äta',
             description: 'frukost',
             doDate: '2024-04-27',
             deadline: '2024-06-07',
@@ -43,16 +44,23 @@ export const taskSlice = createSlice({
                 id: nanoid()
             }
             state.tasks.push(task);
+            localStorage.setItem('tasks', JSON.stringify(state.tasks));
         },
         // Filters tasks state to remove chosen task by id
         removeTask: (state, action) => {
             state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+            localStorage.setItem('tasks', JSON.stringify(state.tasks));
+
         },
         updateTask: (state, action) => {
             state.tasks = action.payload
+            localStorage.setItem('tasks', JSON.stringify(state.tasks));
+
         },
         editTask: (state, action) => {
             state.tasks = state.tasks.map(task => task.id === action.payload.id ? action.payload : task);
+            localStorage.setItem('tasks', JSON.stringify(state.tasks));
+
         }
     }
 })
