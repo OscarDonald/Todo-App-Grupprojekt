@@ -18,13 +18,17 @@ const router = createBrowserRouter([
   {
     path: '/listview',
     element: <ListView />,
-
+    children: [
+      {
+        path: '/listview/:id',
+        element: null
+      }
+    ]
   }
 ]);
 
 
 function App() {
-
   return (
     <main>
       <RouterProvider router={router}/>

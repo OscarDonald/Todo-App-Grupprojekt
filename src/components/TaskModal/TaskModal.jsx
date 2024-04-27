@@ -1,91 +1,57 @@
 import { useState, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'; 
 import { removeTask, editTask } from '../../feature/taskSlice/taskSlice';
+import {setAvailableUsers, setTaskTitle, setTaskDescription, setDoDate, setDeadline, handleResponsibles, handleRemoveResponsibleUser, resetLocalStates, setStates} from '../../feature/modalSlice/modalSlice';
+
 
 
 function TaskModal() {
+    const { availableUsers, responsibles, taskTitle, taskDescription, doDate, deadline} = useSelector((state) => state.modals)
+    const { users } = useSelector(state => state.users);
     const { tasks } = useSelector((state) => state.tasks);
     const { columns } = useSelector((state) => state.columns);
-    const {users} = useSelector(state => state.users)
     const { id } = useParams();
+
     const [show, setShow] = useState(false)
     const [taskData, setTaskData] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
 
-
-
-    const [availableUsers, setAvailableUsers] = useState(users);
-    const [responsibles, setResponsibles] = useState(null);
-    const [taskTitle, setTaskTitle] = useState('');
-    const [taskDescription, setTaskDescription] = useState();
-    const [doDate, setDoDate] = useState('');
-    const [deadline, setDeadline] = useState('');
     const toDaysDate = new Date().toLocaleDateString();
     const dateplusOneYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toLocaleDateString();
 
-    const handleResponsibles = (targetUser) => {
-        const newUser = availableUsers.find((user) => user.name === targetUser);
-        setResponsibles([...responsibles, newUser]);
-        const updatedAvailableUsers = availableUsers.filter((user) => user.name !== targetUser);
-        setAvailableUsers(updatedAvailableUsers);
-    }
 
-    const handleRemoveResponsibleUser = (e) => {
-        const userName = e.target.textContent;
-        const targetUser = responsibles.find((user) => user.name === userName);
-        setAvailableUsers([...availableUsers, targetUser]);
-        const upadatedResponsibles = responsibles.filter((user) => user.name !== userName);
-        setResponsibles(upadatedResponsibles);
-        setTaskData({...taskData, responsibles: upadatedResponsibles})
-    }
-
-    const resetLocalStates = () => {
-        setTaskTitle('');
-        setTaskDescription('');
-        setResponsibles([]);
-        setDoDate('');
-        setDeadline('');
-        setAvailableUsers(users);
-    }
-
-
-
-
-
-
-
-
-
-
-
+    // Find task with id corresponding with id from params
+    // If there is a task set available users to all users
+    // Set taskdata state to task to be able to access task information outside of the useEffect
+    // Set 
     useEffect(() => {
         const task = tasks.find(task => task.id == id)
-        if(task){
-            setTaskData(task);
-            setTaskTitle(task.title)
-            setTaskDescription(task.description)
-            setDoDate(task.doDate)
-            setDeadline(task.deadline)
-            setResponsibles(task.responsible)
-            setShow(true);
-        }
+        if(!task) return
+        dispatch(setAvailableUsers(users));
+        setTaskData(task);
+        dispatch(setStates(task))
+        setShow(true);
+        
     }, [id]);
 
     const handleClose = () => {
+        const currentPage = location.pathname.substring(0, location.pathname.lastIndexOf('/'))
+        navigate(currentPage);
         setShow(false)
-        navigate('/');
-        resetLocalStates();
+        dispatch(resetLocalStates());
     };
 
     const handleDelete = () => {
         dispatch(removeTask(taskData.id))
         handleClose();
-        resetLocalStates();
+        dispatch(resetLocalStates());
     }
 
     const handleEdit = () => {
@@ -103,11 +69,9 @@ function TaskModal() {
             responsible: responsibles,
         }
         dispatch(editTask(updatedTask));
-        resetLocalStates();
+        dispatch(resetLocalStates());
         handleClose();
     }
-
-
 
     return (
         <>
@@ -115,7 +79,7 @@ function TaskModal() {
                 <Modal.Header closeButton>
                     <Modal.Title>{isEditing ?  <input 
                     type='text' value={taskTitle}
-                    onChange={(e) => setTaskTitle(e.target.value)}
+                    onChange={(e) => dispatch(setTaskTitle(e.target.value))}
                     /> : <h2>{taskTitle}</h2>}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -124,15 +88,10 @@ function TaskModal() {
                             <textarea 
                                 type="text" 
                                 value={taskDescription}
-                                onChange={(e) => setTaskDescription(e.target.value)}
+                                onChange={(e) => dispatch(setTaskDescription(e.target.value))}
                             />
 
-
-
-
-
-
-                            <select onChange={(e) => handleResponsibles(e.target.value)}>
+                            <select onChange={(e) => dispatch(handleResponsibles(e.target.value))}>
                                 <option>select a responsible user</option>
                                 {availableUsers && availableUsers.map((user) =>
                                     <option
@@ -141,21 +100,20 @@ function TaskModal() {
                                     </option>
                                 )}
                             </select>
-
-                            {responsibles.length > 0 &&
+                            {responsibles &&
                                 <div>
                                     <label>Responsible</label>
                                     <ul>
-                                        {responsibles.map((user, index) => <li onClick={handleRemoveResponsibleUser} key={user.name || index}>{user.name}
+                                        {responsibles.map((user, index) => <li onClick={(e) => dispatch(handleRemoveResponsibleUser(e.target.textContent))} key={user.name || index}>{user.name}
                                         </li>)}
                                     </ul>
                                 </div>
                             }
-                            <input
+                            <input 
                                 id='todo-date'
                                 type="date"
                                 value={doDate ? doDate : toDaysDate}
-                                onChange={(e) => setDoDate(e.target.value)}
+                                onChange={(e) => dispatch(setDoDate(e.target.value))}
                                 min={toDaysDate}
                                 max={dateplusOneYear}
                             />
@@ -164,28 +122,18 @@ function TaskModal() {
                                 id='deadline-input'
                                 type="date"
                                 value={deadline}
-                                onChange={(e) => setDeadline(e.target.value)}
+                                onChange={(e) => dispatch(setDeadline(e.target.value))}
                                 min={toDaysDate}
                                 max={dateplusOneYear}
                             />
-
-
-
-
-
-
-
-
-
                         </>
                     ) : (
                         <>
                             <p>{taskDescription}</p>
                             <p>{doDate}</p>
                             <p>{deadline}</p>
-                            {responsibles.map((user) => <p key={user.id}>{user.name}</p>)}
-                            {columns.find(column => column.id === taskData.columnId).title}
-                            
+                            {responsibles && responsibles.map((user) => <p key={user.id}>{user.name}</p>)}
+                            {columns.find(column => column.id === taskData.columnId).title}      
                         </>
                     )}
                 </Modal.Body>
@@ -200,7 +148,6 @@ function TaskModal() {
                             Edit
                         </Button>
                     )}
-
                     <Button variant="primary" onClick={handleDelete}>
                         Delete Task
                     </Button>

@@ -4,22 +4,18 @@ import { addTask } from '../../feature/taskSlice/taskSlice';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
 import styles from "./createTask.module.css";
+import {setAvailableUsers, setTaskTitle, setTaskDescription, setDoDate, setDeadline, handleResponsibles, handleRemoveResponsibleUser, resetLocalStates} from '../../feature/modalSlice/modalSlice';
 
 
 // returns a 'add task' button
 // if its klicked a form to creat a tasks displays
 export default function CreateTask() {
-    const [isShowModal, setIsShowModal] = useState(false);
-    const [taskTitle, setTaskTitle] = useState('');
-    const [taskDescription, setTaskDescription] = useState();
-    const [responsibles, setResponsibles] = useState([]);
-    const [doDate, setDoDate] = useState('');
-    const [deadline, setDeadline] = useState('');
+    const { availableUsers, responsibles, taskTitle, taskDescription, doDate, deadline} = useSelector((state) => state.modals)
     const { users } = useSelector(state => state.users);
-    const [availableUsers, setAvailableUsers] = useState(users);
     const { columns } = useSelector((state) => state.columns)
-
+    const [isShowModal, setIsShowModal] = useState(false);
     const dispatch = useDispatch();
+
     const toDaysDate = new Date().toLocaleDateString();
     const dateplusOneYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toLocaleDateString();
 
@@ -35,43 +31,8 @@ export default function CreateTask() {
             columnId: columns[0].id,
         }
         dispatch(addTask(newTask));
-        resetLocalStates();
-    }
-
-    
-    // resets all local states to its inizial values
-    const resetLocalStates = () => {
-        setTaskTitle('');
-        setTaskDescription('');
-        setResponsibles([]);
-        setDoDate('');
-        setDeadline('');
-        setAvailableUsers(users);
+        dispatch(resetLocalStates());
         setIsShowModal(false);
-    }
-
-    // Finds the user in the availableUsers array whose name matches the targetUser.
-    // Adds the found user to the responsibles array
-    // Remove the user from the list of available users.
-    // Update the list of available users.
-    const handleResponsibles = (targetUser) => {
-        const newUser = availableUsers.find((user) => user.name === targetUser);
-        setResponsibles([...responsibles, newUser]);
-        const updatedAvailableUsers = availableUsers.filter((user) => user.name !== targetUser);
-        setAvailableUsers(updatedAvailableUsers);
-    }
-
-    // Get the user's name from the event target.
-    // Find the responsible user with this name.
-    // Add this user to the available users list.
-    // Remove the user from the responsibles list.
-    // Update the responsibles list.
-    const handleRemoveResponsibleUser = (e) => {
-        const userName = e.target.textContent;
-        const targetUser = responsibles.find((user) => user.name === userName);
-        setAvailableUsers([...availableUsers, targetUser]);
-        const upadatedResponsibles = responsibles.filter((user) => user.name !== userName);
-        setResponsibles(upadatedResponsibles);
     }
 
     return (
@@ -81,7 +42,7 @@ export default function CreateTask() {
                     className={styles.add__task__btn}
                     onClick={() => {
                         setIsShowModal(prev => !prev);
-                        setAvailableUsers(users);
+                        dispatch(setAvailableUsers(users));
                     }} ><AiOutlinePlusCircle />Add Task</button>
             </div>
         ) : (
@@ -91,7 +52,7 @@ export default function CreateTask() {
                         className={styles.add__task__title}
                         type="text"
                         value={taskTitle}
-                        onChange={(e) => setTaskTitle(e.target.value)}
+                        onChange={(e) => dispatch(setTaskTitle(e.target.value))}
                         placeholder='Title'
                         required
                     />
@@ -102,12 +63,12 @@ export default function CreateTask() {
                     className={styles.add__task__description}
                     type="text"
                     value={taskDescription}
-                    onChange={(e) => setTaskDescription(e.target.value)}
+                    onChange={(e) => dispatch(setTaskDescription(e.target.value))}
                     placeholder='Description...'
                     cols={40}
                     rows={10}
                 />
-                <select onChange={(e) => handleResponsibles(e.target.value)}>
+                <select onChange={(e) => dispatch(handleResponsibles(e.target.value))}>
                     <option>select a responsible user</option>
                     {availableUsers && availableUsers.map((user) =>
                         <option
@@ -121,7 +82,7 @@ export default function CreateTask() {
                     <div>
                         <label>Responsible</label>
                         <ul className={styles.responsible__user__ul}>
-                            {responsibles.map((user, index) => <li className={styles.responsible__user__li} onClick={handleRemoveResponsibleUser} key={user.name || index}>{user.name}
+                            {responsibles.map((user, index) => <li className={styles.responsible__user__li} onClick={(e) => dispatch(handleRemoveResponsibleUser(e.target.textContent))} key={user.name || index}>{user.name}
                             </li>)}
                         </ul>
                     </div>
@@ -132,7 +93,7 @@ export default function CreateTask() {
                     className={styles.add__task__btn}
                     type="date"
                     value={doDate ? doDate : toDaysDate}
-                    onChange={(e) => setDoDate(e.target.value)}
+                    onChange={(e) => dispatch(setDoDate(e.target.value))}
                     min={toDaysDate}
                     max={dateplusOneYear}
                 />
@@ -143,7 +104,7 @@ export default function CreateTask() {
                     className={styles.add__task__btn}
                     type="date"
                     value={deadline}
-                    onChange={(e) => setDeadline(e.target.value)}
+                    onChange={(e) => dispatch(setDeadline(e.target.value))}
                     min={toDaysDate}
                     max={dateplusOneYear}
                 />

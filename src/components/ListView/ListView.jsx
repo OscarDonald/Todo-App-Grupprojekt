@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
 import styles from './ListView.module.css'
 import { Link } from 'react-router-dom'
 import "../../index.css"
 import { useSelector } from 'react-redux'
 import Task from '../Task/Task';
+import TaskModal from '../TaskModal/TaskModal'
 
 const ListView = () => {
     // gets tasks from taskSlice.js and saves it to 'tasks'
@@ -30,6 +30,7 @@ const ListView = () => {
                         <Task task={task} key={task.id} cssClassname={true} />
                     ))}
             </div>
+            <TaskModal /> 
         </>
     )
 }
