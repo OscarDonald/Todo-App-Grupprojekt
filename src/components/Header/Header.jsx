@@ -1,10 +1,6 @@
 // Ikoner som inte riktigt matchar i tjocklek
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
-
-import { useDispatch, useSelector } from 'react-redux';
-import { addColumn } from '../../feature/columnSlice/columnSlice';
-
 import styles from './Header.module.css'
 import Dropdown from "../Dropdown/Dropdown";
 import { useState } from 'react'
@@ -13,7 +9,6 @@ import { useState } from 'react'
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [mode, setMode] = useState('');
-    const dispatch = useDispatch();
 
     // Går inte att klicka mellan knapparna då båda togglar show
     // Går inte att stänga genom att klicka utanför
@@ -24,6 +19,9 @@ export default function Header() {
 
     return (
         <header>
+            <div className={styles.header__logo__container}>
+                <img src="../../image/logo.png" alt="Ants dragging a donut that says 'GBG est. 2023'" className={styles.header__logo}/>
+            </div>
             <h1 className={styles.header__title}>Todo App</h1>
             <div className={styles.header__nav__container}>
                 <nav className={styles.header__nav}>
