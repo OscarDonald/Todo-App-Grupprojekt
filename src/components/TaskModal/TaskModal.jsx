@@ -19,6 +19,8 @@ function TaskModal() {
 
 
 
+
+    // Straight copied from createTask because there was no time to re-write the previously made component to be more broadly available in it's functionality
     const [availableUsers, setAvailableUsers] = useState(users);
     const [responsibles, setResponsibles] = useState(null);
     const [taskTitle, setTaskTitle] = useState('');
@@ -52,6 +54,7 @@ function TaskModal() {
         setDeadline('');
         setAvailableUsers(users);
     }
+    // End of copied code
 
     useEffect(() => {
         const task = tasks.find(task => task.id == id)
@@ -62,6 +65,8 @@ function TaskModal() {
             setDoDate(task.doDate)
             setDeadline(task.deadline)
             setResponsibles(task.responsible)
+            const available = users.filter(user => !task.responsible.includes(user));
+            setAvailableUsers(available);
             setShow(true);
         }
     }, [id]);
