@@ -5,6 +5,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'; 
 import { removeTask, editTask } from '../../feature/taskSlice/taskSlice';
 
+import styles from './TaskModal.module.css'
+
 
 function TaskModal() {
     const { tasks } = useSelector((state) => state.tasks);
@@ -53,6 +55,7 @@ function TaskModal() {
         setDoDate('');
         setDeadline('');
         setAvailableUsers(users);
+        setIsEditing(false)
     }
     // End of copied code
 
@@ -118,7 +121,7 @@ function TaskModal() {
                 </Modal.Header>
                 <Modal.Body>
                     {isEditing ? (
-                        <>
+                        <div className={styles.modal__form}>
                             <textarea 
                                 type="text" 
                                 value={taskDescription}
@@ -138,8 +141,8 @@ function TaskModal() {
                             {responsibles.length > 0 &&
                                 <div>
                                     <label>Responsible</label>
-                                    <ul>
-                                        {responsibles.map((user, index) => <li onClick={handleRemoveResponsibleUser} key={user.name || index}>{user.name}
+                                    <ul className={styles.responsible__user__ul} >
+                                        {responsibles.map((user, index) => <li onClick={handleRemoveResponsibleUser} className={styles.responsible__user__li} key={user.name || index}>{user.name}
                                         </li>)}
                                     </ul>
                                 </div>
@@ -161,7 +164,7 @@ function TaskModal() {
                                 min={toDaysDate}
                                 max={dateplusOneYear}
                             />
-                        </>
+                        </div>
                     ) : (
                         <>
                             <p>{taskDescription}</p>
@@ -185,7 +188,7 @@ function TaskModal() {
                         </Button>
                     )}
 
-                    <Button variant="secondary" onClick={handleDelete}>
+                    <Button variant="secondary" className={styles.modal__delete} onClick={handleDelete}>
                         Delete Task
                     </Button>
                 </Modal.Footer>

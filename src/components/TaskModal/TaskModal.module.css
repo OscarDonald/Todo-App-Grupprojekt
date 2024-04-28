@@ -1,0 +1,31 @@
+.modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* Re-used from taskmodal */
+.responsible__user__ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 0;
+  }
+  
+  .responsible__user__li {
+    list-style: none;
+    border: 1px solid;
+    border-radius: .5rem;
+    padding: 2px .5rem;
+    cursor: pointer;
+  }
+/* End */
+
+.modal__delete {
+    background-color: rgb(255, 84, 84);
+    border: 1px solid rgb(255, 84, 84);
+}
+.modal__delete:hover {
+    background-color: rgb(253, 50, 50);
+}
