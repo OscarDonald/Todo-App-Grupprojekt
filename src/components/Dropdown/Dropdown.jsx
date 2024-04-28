@@ -43,6 +43,7 @@ const Dropdown = ({ mode }) => {
                         placeholder='Full name...'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        required
                     />
                     <button className={states.submit__button} type='submit'>Submit!</button>
                 </form>

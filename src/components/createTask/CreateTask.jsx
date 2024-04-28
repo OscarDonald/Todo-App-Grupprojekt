@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from '../../feature/taskSlice/taskSlice';
 import { AiOutlinePlusCircle } from "react-icons/ai";
