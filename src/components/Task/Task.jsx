@@ -1,15 +1,15 @@
 import styles from './Task.module.css'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 // returns rendering of a task
 export default function Task({ task, cssClassname }) {
     const { columns } = useSelector((state) => state.columns);
+    const location = useLocation();
+    console.log(location.pathname)
 
     function getColumnClassName(columnId) {
-        
         const columnObject = columns.find(column => columnId === column.id)
-
         switch (columnObject.title) {
             case "Todo":
                 return styles.column__todo;
@@ -29,7 +29,7 @@ export default function Task({ task, cssClassname }) {
             draggable
             onDragStart={(e) => { e.dataTransfer.setData('id', task.id) }} // transport key('id) with value (task.id)
             className={cssClassname ? `${styles.listview__tasks}` : `${styles.task__card}`}
-            onClick={() => navigate(`/${task.id}`)}
+            onClick={() => navigate(location.pathname.includes('listview') ? `/listview/${task.id}` : `/${task.id}`)}
         >
             <div className={styles.listview__container__left}>
                 {task.title && <h4>{task.title}</h4>}
