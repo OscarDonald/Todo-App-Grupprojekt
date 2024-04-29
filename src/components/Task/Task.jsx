@@ -28,21 +28,21 @@ export default function Task({ task, cssClassname }) {
             // Drag and Drop-function
             draggable
             onDragStart={(e) => { e.dataTransfer.setData('id', task.id) }} // transport key('id) with value (task.id)
-            className={cssClassname ? `${styles.listview__tasks}` : `${styles.task__card}`}
+            className={cssClassname ? `${styles.listview}` : `${styles.main}`}
             onClick={() => navigate(`/${task.id}`)}
         >
-            <div className={styles.listview__container__left}>
+            <div className={styles.container__left}>
                 {task.title && <h4>{task.title}</h4>}
-                {task.deadline && <p className={styles.listview__deadline}>Deadline: {task.deadline}</p>}
+                {task.deadline && <p className={styles.deadline}>Deadline: {task.deadline}</p>}
             </div>
-            <div className={styles.listview__container__right}>
+            <div className={styles.container__right}>
                 {task.responsible.length > 0 &&
-                    <div className={styles.listview__responsible__container}>
-                        {task.responsible.map(user => <p className={styles.listview__responsible} key={user.id}>{user.initials}</p>)}
+                    <div className={styles.responsible__container}>
+                        {task.responsible.map(user => <p className={styles.responsible} key={user.id}>{user.initials}</p>)}
                     </div>}
                 {task.columnId &&
-                    <div className={`${styles.listview__column__title__container} ${getColumnClassName(task.columnId)}` }>
-                        <p className={`${styles.listview__column__title}`}>
+                    <div className={`${styles.column__title__container} ${getColumnClassName(task.columnId)}` }>
+                        <p className={`${styles.column__title}`}>
                             {columns.map(column => column.id === task.columnId ? column.title : null)}
                             {task.column}
                         </p>
