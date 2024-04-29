@@ -1,5 +1,4 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { json } from 'react-router-dom';
 
 // dummy data
 const initialState = {

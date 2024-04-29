@@ -24,20 +24,24 @@ const ListView = () => {
 
     const [listviewTasks, setListviewTasks] = useState(formatedTasks)
 
+    // Filter tasks by user
+    // Find user by ID
+    // If there is no user object, return all formatted tasks
+    // Go through the tasks array and map the ID of all responsible users in the task.rerrsponsible array
+    // Check if the current user has an ID that matches and return the task 
+    // Set listviewTask state to the new filtered array for rendering
     const handleFilter = (id) => {
-        // console.log(users, 'users')
-        console.log(typeof id, 'id')
         const currentUser = users.find((user) => id === user.id);
-        // console.log(tasks, 'tasks')
+        if(!currentUser){
+            setListviewTasks(formatedTasks)
+            return   
+        }
         const currentTasks = tasks
             .filter((task) => {
-                console.log(task.responsible, 'task')
-                    console.log(currentUser, 'currentUser')
-                    const user = task.responsible.includes(currentUser)
-                    console.log(user, 'user')
-                return user
+                const responsibleID = task.responsible.map(user => user.id)
+                const bool = responsibleID.includes(currentUser.id)
+                return bool
             });
-        // console.log(currentTasks)
         setListviewTasks(currentTasks)
     }
 
@@ -52,13 +56,13 @@ const ListView = () => {
                         className={styles.ListView__filter__btn}
                         onChange={(e) => handleFilter(e.target.value)}
                     >
-                        <option value="">Filter by name</option>
+                        <option value="">All users</option>
                         {users.map((user) => <option key={user.id} value={user.id}>{user.name}</option>)}
                     </select>
                 </div>
-                {listviewTasks.map(task => (
+                {listviewTasks.length ? listviewTasks.map(task => (
                     <Task task={task} key={task.id} cssClassname={true} />
-                ))}
+                )) : <p>Den valda användaren har inga tasks!</p>}
             </div>
         </>
     )
