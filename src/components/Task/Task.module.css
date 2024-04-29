@@ -1,4 +1,7 @@
-.task__card {
+/* -------------
+----- MAIN -----
+-------------- */
+.main {
     border-radius: .5rem;
     padding: .75rem;
     background-color: white;
@@ -8,9 +11,28 @@
     gap: 5px;
 }
 
-/* listview */
+.main 
+.responsible__container{
+    width: fit-content;
+    display: flex;
+    gap: .5rem;
+}
 
-.listview__tasks {
+.main 
+.responsible {
+    margin-top: 16px;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: rgb(154, 247, 224);
+    width: 35px;
+    height: 35px;
+}
+
+/* -------------
+--- LISTVIEW ---
+-------------- */
+.listview {
     border-radius: .5rem;
     padding: .5rem;
     background-color: white;
@@ -19,51 +41,68 @@
     box-shadow: 2px 2px 3px rgb(155, 155, 155);
 }
 
-.listview__tasks .listview__deadline {
+
+.listview 
+.deadline {
     font-size: .7rem;
     color: rgb(84, 84, 84);
 }
-.listview__tasks .listview__container__left {
+.listview 
+.container__left {
     display: flex;
     flex-direction: column;
     align-items: start;
 }
 
-.listview__tasks .listview__container__right {
+.listview 
+.container__right {
     display: flex;
     align-items: center;
     gap: .5rem;
 }
 
-.listview__tasks .listview__column__title__container {
-    background-color: #e07b7ba7;
+.listview 
+.column__title__container {
     border-radius: .5rem;
     padding: .3rem;
 }
-.listview__tasks .column__done {
+.listview 
+.column__done {
     background-color: rgb(142, 255, 161);
 }
-.listview__tasks .column__todo {
+.listview 
+.column__todo {
     background-color: rgb(160, 205, 255);
 }
 
-.listview__tasks .column__doing {
+.listview 
+.column__doing {
     background-color: rgb(235, 233, 160);
 }
 
+.listview 
+.column__default {
+    background-color: #e07b7ba7;
+}
 
-.listview__tasks .listview__column__title__container p {
+
+.listview 
+.column__title__container p {
     margin: 0;
 }
 
-.listview__tasks .listview__responsible__container {
+.listview 
+.responsible__container {
     width: fit-content;
     display: flex;
     align-items: center;
     gap: .5rem;
 }
 
-.listview__tasks .listview__responsible {
+.listview 
+.responsible {
+    width: 35px;
+    height: 35px;
     margin-top: 16px;
     font-size: 15px;
     padding: 5px;

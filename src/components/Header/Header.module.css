@@ -2,29 +2,31 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: .5rem 0;
 }
 
 .header__title {
   color: white;
   font-size: 3.5rem;
   margin: 0 auto;
-  margin-bottom: 30px;
 }
 
 .header__nav__container {
   position: relative;
-  bottom: 10px;
 }
 
 .header__ul {
   list-style-type: none;
   display: flex;
+  align-items: center;
   gap: 10px;
+  padding: 0;
+  margin: 0;
 }
 
+/* Oklar storlek på li-element utan denna */
+/* 4extra px som 'padding' på botten av elementet som inte går bort */
 .header__li {
-  /* Oklar storlek på li-element utan denna */
-  /* 4extra px som 'padding' på botten av elementet som inte går bort */
   height: 35px;
 }
 
@@ -36,7 +38,6 @@ header {
 }
 
 .header__icons:hover {
-  font-size: 35px;
   color: #686868;
 }
 
@@ -44,10 +45,10 @@ header {
   rotate: 180deg;
 }
 
-.add__column__button {
-  border: none;
-  background-color: #0275d8;
-  color: white;
-  border-radius: 5px;
-  padding: 8px 12px;
+.header__logo__container{
+  height: 7rem;
+}
+
+.header__logo {
+  height: 100%;
 }

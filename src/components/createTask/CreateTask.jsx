@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {  useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from '../../feature/taskSlice/taskSlice';
 import { AiOutlinePlusCircle } from "react-icons/ai";
@@ -22,6 +22,8 @@ export default function CreateTask() {
     const dispatch = useDispatch();
     const toDaysDate = new Date().toLocaleDateString();
     const dateplusOneYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toLocaleDateString();
+
+
 
     // adds all local states to 'newTask' object and dispatch it to 'taskSlice'
     const createTask = (e) => {

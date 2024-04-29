@@ -1,37 +1,39 @@
+.settings__menu {
+    position: relative;
+    background-color: transparent;
+    border-radius: .5rem;
+}
 .settings__button {
     display: flex;
     align-items: center;
     height: 1.5rem;
     width: 1.5rem;
+    background-color: transparent;
+    border: none;
 }
 .settings__icon {
     font-size: 1.5rem;
-}
-.settings__menu {
-    position: relative;
-    /* background-color: rgb(216, 216, 216); */
-    border-radius: .5rem;
+    background-color: transparent;
 }
 .settings__options {
     position: absolute;
     list-style-type: none;
-    top: 1.5rem;
+    top: 30px;
     right: 0;
-    width: max-content;
-    border: 1px solid black;
-    background-color: white;
+    width: 200px;
+    background-color: rgb(230, 230, 230);
     border-radius: .3rem;
-    padding: 5px;
+    padding: 10px;
 }
 
 .settings__options li{
-    border: 1px solid black;
+    display: flex;
     border-radius: 5px;
     padding: .5rem;
     margin: .25rem 0;
 }
 
 .settings__options li:hover{
-    background-color: rgba(173, 216, 230, 0.726);
+    background-color: rgba(201, 201, 201, 0.726);
     cursor: pointer;
 }

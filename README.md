@@ -9,7 +9,7 @@
 
 - se till att vara i din branch när du jobbar / git checkout feature/{namn på branch med kebab-case}
 - git add .
-- git commit kort meddelande, högst 100tecken, inled med vad du har gjort i bestämd form (add, fix, delete, m.m.)
+- git commit kort meddelande, högst 100tecken, inled med vad du har gjort i bestämd form (add,git fix, delete, m.m.)
 - git push -u origin feature/{namn på branch med kebab-case} (efter att -u är satt första gången kan man använda sig av bara git push)
 
 ## Vid färdig feature
