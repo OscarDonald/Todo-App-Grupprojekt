@@ -5,6 +5,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'; 
 import { removeTask, editTask } from '../../feature/taskSlice/taskSlice';
 
+import styles from './TaskModal.module.css'
+
 
 function TaskModal() {
     const { tasks } = useSelector((state) => state.tasks);
@@ -19,6 +21,8 @@ function TaskModal() {
 
 
 
+
+    // Straight copied from createTask because there was no time to re-write the previously made component to be more broadly available in it's functionality
     const [availableUsers, setAvailableUsers] = useState(users);
     const [responsibles, setResponsibles] = useState(null);
     const [taskTitle, setTaskTitle] = useState('');
@@ -51,7 +55,9 @@ function TaskModal() {
         setDoDate('');
         setDeadline('');
         setAvailableUsers(users);
+        setIsEditing(false)
     }
+    // End of copied code
 
     useEffect(() => {
         const task = tasks.find(task => task.id == id)
@@ -62,6 +68,8 @@ function TaskModal() {
             setDoDate(task.doDate)
             setDeadline(task.deadline)
             setResponsibles(task.responsible)
+            const available = users.filter(user => !task.responsible.includes(user));
+            setAvailableUsers(available);
             setShow(true);
         }
     }, [id]);
@@ -73,10 +81,13 @@ function TaskModal() {
     };
 
     const handleDelete = () => {
-        dispatch(removeTask(taskData.id))
-        handleClose();
-        resetLocalStates();
-    }
+        const isConfirmed = window.confirm("Are you sure you want to delete this task?");
+        if (isConfirmed) {
+            dispatch(removeTask(taskData.id));
+            handleClose();
+            resetLocalStates();
+        }
+    }    
 
     const handleEdit = () => {
         setIsEditing(prev => !prev);
@@ -110,7 +121,7 @@ function TaskModal() {
                 </Modal.Header>
                 <Modal.Body>
                     {isEditing ? (
-                        <>
+                        <div className={styles.modal__form}>
                             <textarea 
                                 type="text" 
                                 value={taskDescription}
@@ -130,8 +141,8 @@ function TaskModal() {
                             {responsibles.length > 0 &&
                                 <div>
                                     <label>Responsible</label>
-                                    <ul>
-                                        {responsibles.map((user, index) => <li onClick={handleRemoveResponsibleUser} key={user.name || index}>{user.name}
+                                    <ul className={styles.responsible__user__ul} >
+                                        {responsibles.map((user, index) => <li onClick={handleRemoveResponsibleUser} className={styles.responsible__user__li} key={user.name || index}>{user.name}
                                         </li>)}
                                     </ul>
                                 </div>
@@ -153,7 +164,7 @@ function TaskModal() {
                                 min={toDaysDate}
                                 max={dateplusOneYear}
                             />
-                        </>
+                        </div>
                     ) : (
                         <>
                             <p>{taskDescription}</p>
@@ -172,12 +183,12 @@ function TaskModal() {
                         </Button>
 
                     ):(
-                        <Button variant="secondary" onClick={handleEdit}>
+                        <Button variant= "primary" onClick={handleEdit}>
                             Edit
                         </Button>
                     )}
 
-                    <Button variant="primary" onClick={handleDelete}>
+                    <Button variant="secondary" className={styles.modal__delete} onClick={handleDelete}>
                         Delete Task
                     </Button>
                 </Modal.Footer>
