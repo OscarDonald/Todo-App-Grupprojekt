@@ -1,13 +1,11 @@
 import { useState, useEffect} from 'react';
-<<<<<<< HEAD
-import { useParams, useNavigate } from 'react-router-dom';
-=======
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
->>>>>>> main
 import { useSelector, useDispatch } from 'react-redux'; 
-import { removeTask, editTask } from '../../feature/taskSlice/taskSlice';
+
+import { removeTask, editTask } from '../../../feature/taskSlice/taskSlice';
+
 import styles from './TaskModal.module.css'
 
 

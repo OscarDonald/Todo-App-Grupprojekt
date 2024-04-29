@@ -1,7 +1,7 @@
 import ColumnSettings from '../ColumnSettings/ColumnSettings';
 import CreateTask from '../createTask/CreateTask';
 import Task from '../Task/Task';
-import TaskModal from '../TaskModal/TaskModal';
+import TaskModal from '../Task/TaskModal/TaskModal';
 import styles from "./Columns.module.css"
 import { useState } from 'react';
 import { useSelector } from 'react-redux'; // Assuming you're using Redux for state management

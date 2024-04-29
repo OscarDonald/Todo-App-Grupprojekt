@@ -5,7 +5,7 @@ import { PiArrowBendUpLeftDuotone } from "react-icons/pi";
 import { useSelector } from 'react-redux'
 import Task from '../Task/Task';
 import { useState } from 'react';
-import TaskModal from '../TaskModal/TaskModal';
+import TaskModal from '../Task/TaskModal/TaskModal';
 
 const ListView = () => {
     // gets tasks from taskSlice.js and saves it to 'tasks'
