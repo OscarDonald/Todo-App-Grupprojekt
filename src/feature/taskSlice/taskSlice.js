@@ -52,18 +52,18 @@ export const taskSlice = createSlice({
             localStorage.setItem('tasks', JSON.stringify(state.tasks));
 
         },
+        // update columnId for DnD
         updateTask: (state, action) => {
             state.tasks = action.payload
-            localStorage.setItem('tasks', JSON.stringify(state.tasks));
-
+            localStorage.setItem('tasks', JSON.stringify(state.tasks));  
         },
         editTask: (state, action) => {
             state.tasks = state.tasks.map(task => task.id === action.payload.id ? action.payload : task);
             localStorage.setItem('tasks', JSON.stringify(state.tasks));
-
         }
     }
-})
+});
 
-export const { addTask, removeTask, updateTask, editTask } = taskSlice.actions; // reducer funcionerna i taskSlice som expoteras
+// reducer funcionerna i taskSlice som expoteras
+export const { addTask, removeTask, updateTask, editTask } = taskSlice.actions; 
 export default taskSlice.reducer;
