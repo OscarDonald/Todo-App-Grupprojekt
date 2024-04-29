@@ -1,5 +1,11 @@
 import { useState, useEffect} from 'react';
+<<<<<<< HEAD
 import { useParams, useNavigate } from 'react-router-dom';
+=======
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+>>>>>>> main
 import { useSelector, useDispatch } from 'react-redux'; 
 import { removeTask, editTask } from '../../feature/taskSlice/taskSlice';
 import styles from './TaskModal.module.css'
@@ -15,6 +21,7 @@ function TaskModal() {
     const [isEditing, setIsEditing] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
 
 
 
@@ -73,7 +80,8 @@ function TaskModal() {
 
     const handleClose = () => {
         setShow(false)
-        navigate('/');
+        var newLocation = location.pathname.substring(0, location.pathname.lastIndexOf("/"));
+        navigate(newLocation);
         resetLocalStates();
     };
 
