@@ -2,7 +2,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 
 .header__title {
@@ -45,10 +45,52 @@ header {
   rotate: 180deg;
 }
 
-.header__logo__container{
+.header__logo__container {
   height: 7rem;
 }
 
 .header__logo {
   height: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  .header__nav__container {
+    margin: 0 auto;
+  }
+
+  .header__title {
+    font-size: 2rem;
+  }
+
+  .header__icons {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (360px < width < 500px) {
+  .header__nav__container {
+    margin: 0 auto;
+  }
+
+  .header__title {
+    font-size: 2.5rem;
+  }
+
+  .header__icons {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (480px < width < 768px) {
+  .header__nav__container {
+    margin: 0 auto;
+  }
+
+  .header__title {
+    font-size: 3rem;
+  }
+
+  .header__icons {
+    font-size: 2.5rem;
+  }
 }

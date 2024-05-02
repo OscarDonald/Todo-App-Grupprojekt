@@ -2,8 +2,9 @@
 
 - Navigera till foldern där du vill att projektmappen ska ligga
 - git clone https://github.com/OscarDonald/Todo-App-Grupprojekt#react--vite
-- cd Qurie-anteckningsbok-team-gbg
 - git checkout -b feature/{namn på branch med kebab-case}
+
+behöver installera bootstrap : npm install bootstrap
 
 ## Under tiden
 
