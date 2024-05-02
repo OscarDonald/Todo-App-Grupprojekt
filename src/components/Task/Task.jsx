@@ -22,6 +22,15 @@ export default function Task({ task, cssClassname }) {
         }
     }
 
+    // Function for truncating long column names
+    function truncName(title) {
+        if(title.length > 6){
+            const shortName = title.slice(0, 6) + '...'
+            return shortName
+        }
+        return title
+    }
+
     const navigate = useNavigate();
     return (
         <div
@@ -43,8 +52,7 @@ export default function Task({ task, cssClassname }) {
                 {task.columnId &&
                     <div className={`${styles.column__title__container} ${getColumnClassName(task.columnId)}` }>
                         <p className={`${styles.column__title}`}>
-                            {columns.map(column => column.id === task.columnId ? column.title : null)}
-                            {task.column}
+                            {location.pathname.includes('listview') && truncName(columns.find(column => column.id === task.columnId).title)}
                         </p>
                     </div>
                 }

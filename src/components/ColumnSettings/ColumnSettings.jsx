@@ -1,18 +1,28 @@
 import { useState, useEffect, useRef } from "react";
 import { removeColumn, moveColumn, copyColumn } from "../../feature/columnSlice/columnSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RxDotsHorizontal } from "react-icons/rx";
 import styles from './ColumnSettings.module.css'
 import { Link } from "react-router-dom";
+import taskSlice from "../../feature/taskSlice/taskSlice";
+
 
 // returns a button for 'settings' if its klicked a menu shows with 'delete list', 'move right/left', 'copy list' 
 export default function ColumnSettings({ column }) {
   const dispatch = useDispatch();
+  const { tasks } = useSelector((state) => state.tasks);
 
   const confirmDelete = () => {
-    const confirmDlt = window.confirm('Do you want to delete this list?')
-    if (confirmDlt) {
-      dispatch(removeColumn(column.id))
+    const sameColumnId = tasks.some(task => task.columnId === column.id);
+
+    const confirmDlt = sameColumnId ?
+      window.confirm('Please delete or move tasks in list before deleting.') :
+      window.confirm('Do you want to delete this list?');
+    
+    if (!sameColumnId) {
+      dispatch(removeColumn(column.id));
+      // window.location.reload();
+      ;
     }
   };
 

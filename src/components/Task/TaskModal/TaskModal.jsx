@@ -172,7 +172,7 @@ function TaskModal() {
                             <p>{doDate}</p>
                             <p>{deadline}</p>
                             {responsibles.map((user) => <p key={user.id}>{user.name}</p>)}
-                            {columns.find(column => column.id === taskData.columnId).title}
+                            {columns.map(column => column.id === taskData.columnId ? column.title : null)}
                             
                         </>
                     )}
