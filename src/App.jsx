@@ -3,7 +3,6 @@ import Columns from './components/Columns/Columns.jsx';
 import ListView from './components/ListView/ListView.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -27,9 +26,7 @@ const router = createBrowserRouter([
   }
 ]);
 
-
 function App() {
-
   return (
     <main>
       <RouterProvider router={router}/>

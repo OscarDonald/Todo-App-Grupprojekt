@@ -1,6 +1,11 @@
 /* -------------
 ----- MAIN -----
 -------------- */
+
+* {
+    margin: 0;
+}
+
 .main {
     border-radius: .5rem;
     padding: .75rem;
@@ -40,13 +45,12 @@
     box-shadow: 2px 2px 3px rgb(155, 155, 155);
 }
 
-
 .listview 
 .deadline {
     font-size: .7rem;
     color: rgb(84, 84, 84);
 }
-.listview 
+
 .container__left {
     display: flex;
     flex-direction: column;
@@ -87,11 +91,6 @@
 
 
 .listview 
-.column__title__container p {
-    margin: 0;
-}
-
-.listview 
 .responsible__container {
     width: fit-content;
     display: flex;
@@ -106,7 +105,6 @@
     justify-content: center;
     width: 35px;
     height: 35px;
-    margin: 0;
     font-size: 15px;
     border-radius: 35px;
     background-color: rgb(247, 154, 170);
