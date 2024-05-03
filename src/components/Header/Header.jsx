@@ -5,13 +5,10 @@ import styles from './Header.module.css'
 import Dropdown from "../Dropdown/Dropdown";
 import { useState } from 'react'
 
-
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [mode, setMode] = useState('');
 
-    // Går inte att klicka mellan knapparna då båda togglar show
-    // Går inte att stänga genom att klicka utanför
     const handleClick = (mode) => {
         setMode(mode);
         setIsOpen(prev => !prev)
@@ -44,6 +41,5 @@ export default function Header() {
                 {isOpen && <Dropdown mode={mode}/>}
             </div>
         </header>
-
     )
 }
