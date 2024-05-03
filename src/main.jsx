@@ -7,7 +7,6 @@ import { store } from './store'
 import Header from '../src/components/Header/Header'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
