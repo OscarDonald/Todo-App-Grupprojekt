@@ -7,7 +7,6 @@ import { removeTask, editTask } from '../../feature/taskSlice/taskSlice';
 
 import styles from './TaskModal.module.css'
 
-
 function TaskModal() {
     const { tasks } = useSelector((state) => state.tasks);
     const { columns } = useSelector((state) => state.columns);
@@ -19,9 +18,6 @@ function TaskModal() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
-
-
-
 
     // Straight copied from createTask because there was no time to re-write the previously made component to be more broadly available in it's functionality
     const [availableUsers, setAvailableUsers] = useState(users);
@@ -110,8 +106,6 @@ function TaskModal() {
         handleClose();
     }
 
-
-
     return (
         <>
             {taskData && <Modal show={show} onHide={handleClose}>
@@ -129,7 +123,6 @@ function TaskModal() {
                                 value={taskDescription}
                                 onChange={(e) => setTaskDescription(e.target.value)}
                             />
-
                             <select onChange={(e) => handleResponsibles(e.target.value)}>
                                 <option>select a responsible user</option>
                                 {availableUsers && availableUsers.map((user) =>
@@ -139,7 +132,6 @@ function TaskModal() {
                                     </option>
                                 )}
                             </select>
-
                             {responsibles.length > 0 &&
                                 <div>
                                     <label>Responsible</label>
@@ -174,7 +166,6 @@ function TaskModal() {
                             <p>{deadline}</p>
                             {responsibles.map((user) => <p key={user.id}>{user.name}</p>)}
                             {columns.map(column => column.id === taskData.columnId ? column.title : null)}
-                            
                         </>
                     )}
                 </Modal.Body>
@@ -183,19 +174,16 @@ function TaskModal() {
                         <Button variant="secondary" onClick={(e) => handleSubmit(e)}>
                             Save
                         </Button>
-
                     ):(
                         <Button variant= "primary" onClick={handleEdit}>
                             Edit
                         </Button>
                     )}
-
                     <Button variant="secondary" className={styles.modal__delete} onClick={handleDelete}>
                         Delete Task
                     </Button>
                 </Modal.Footer>
             </Modal>}
-
         </>
     );
 }
