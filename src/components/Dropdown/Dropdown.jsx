@@ -1,5 +1,5 @@
-// Tillgång till isOpen-state här för att kunna stänga på klick
-// Lägg till ta bort knapp på användarna och binda till färdiga funktionen i slicen
+// Access to isOpen state here to be able to close on click
+// Add delete button on the users and bind to the completed function in the slice
 import states from './Dropdown.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, chooseUser, removeUser } from '../../feature/userSlice/userSlice';
@@ -20,9 +20,9 @@ const Dropdown = ({ mode }) => {
     }
 
     
-    // Förhindra uppdatering
-    // Lägg till användarnamn till users
-    // Nollställ state
+    // Prevent updating
+    // Add username to users
+    // Reset state
     const handleNewUser = (e) => {
         e.preventDefault();
         const initials = getInitials(username);
@@ -31,7 +31,7 @@ const Dropdown = ({ mode }) => {
     }
 
 
-    // Returnerar dropdown meny med conditional rendering för innehåll beroende på om man klickat på 'lägg till användare'
+    // Returns dropdown menu with conditional rendering for content depending on whether 'add user' was clicked    
     return (
         <div className={states.dropdown}>
             {mode === 'add' ? (
