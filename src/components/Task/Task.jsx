@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 export default function Task({ task, cssClassname }) {
     const { columns } = useSelector((state) => state.columns);
     const location = useLocation();
-    console.log(location.pathname)
 
     function getColumnClassName(columnId) {
         const columnObject = columns.find(column => columnId === column.id)

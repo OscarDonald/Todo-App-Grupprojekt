@@ -33,6 +33,8 @@ const Columns = () => {
         dispatch(updateTask(updatedTasks));
     }
 
+
+
     // ÄNDRINGAR 
     // Update title utflyttad till slice
     // handleFinishEdit borttagen och utbytt mot setEditableColumn
@@ -40,11 +42,15 @@ const Columns = () => {
     // Tasks har numera en property som säger vilken kolumn de tillhör, value är kolumnens index (fungerar dåligt när man tar bort kolumner och detta kommer behövas bytas men är det smidigaste med hårdkodade tasks)
     // När vi sen gör tasks så kan vi lägga till tasks.column som ID:t av första kolumen.
     // La till else return i move-funktionen för att förhindra att kolumnerna flyttades för långt
+
+    
     return (
         
         <div className={styles.main}>
+            {/* {columns.map(column => console.log(column.title))} */}
             {columns.map(column => (
                 <div
+
                     onDragOver={(e) => { e.preventDefault() }}
                     onDrop={(e) => {handleDrop(e, column.id)}}
                     className={styles.tasks__column} key={column.id}>

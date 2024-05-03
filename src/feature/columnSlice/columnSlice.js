@@ -21,20 +21,34 @@ const initialState = {
     ]
 }
 
+
+
 export const columnSlice = createSlice({
     name: 'column',
     initialState,
     reducers: {
+
         // Creates a new column object and adds it to the columns state
         addColumn: (state) => {
+            const existingTitle = (column) => column.title === 'New List' 
+
+            if (state.columns.some(existingTitle)) {
+                alert(`Please rename "New List"`)
+                return;
+            }
+            
             const column = {
                 title: 'New List',
                 id: nanoid(),
                 tasks: [],
             }
+
+
             state.columns.push(column);
             localStorage.setItem('columns', JSON.stringify(state.columns));
+            
         },
+        
         // Filters the columns state to remove chosen column by ID
         removeColumn: (state, action) => {
             const removeColumn = state.columns.filter((column) => column.id !== action.payload);
@@ -75,6 +89,8 @@ export const columnSlice = createSlice({
             state.columns = updatedColumns;
             localStorage.setItem('columns', JSON.stringify(state.columns));
         }
+
+        
     }
 })
 
