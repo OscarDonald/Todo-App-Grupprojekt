@@ -15,14 +15,12 @@ export default function ColumnSettings({ column }) {
   const confirmDelete = () => {
     const sameColumnId = tasks.some(task => task.columnId === column.id);
 
-    const confirmDlt = sameColumnId ?
+    sameColumnId ?
       window.confirm('Please delete or move tasks in list before deleting.') :
       window.confirm('Do you want to delete this list?');
     
     if (!sameColumnId) {
       dispatch(removeColumn(column.id));
-      // window.location.reload();
-      ;
     }
   };
 

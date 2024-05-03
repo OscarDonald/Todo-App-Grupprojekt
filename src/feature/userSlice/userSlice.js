@@ -7,42 +7,36 @@ const initialState = {
         id: "1",
         name: 'Jens Bengtsson',
         initials: "JB",
-        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
     {
         isLoggedIn: false,
         id: "2",
         name: 'Emil Winberg',
         initials: "EW",
-        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
     {
         isLoggedIn: false,
         id: "3",
         name: 'Oscar Donaldson',
         initials: "OD",
-        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
     {
         isLoggedIn: false,
         id: "4",
         name: 'Nyat Ghirmazion',
         initials: "NG",
-        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
     {
         isLoggedIn: false,
         id: "5",
         name: 'David Heidari',
         initials: "DH",
-        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     },
     {
         isLoggedIn: false,
         id: "6",
         name: 'Toleen Alrifai',
         initials: "TA",
-        tasks: [/*filtrerade taskSlice staten för vilka som är 'responsible' */],
     }]
 }
 
@@ -66,10 +60,10 @@ export const userSlice = createSlice({
             localStorage.setItem('users', JSON.stringify(state.users));
         },
         chooseUser: (state, action) => {
-            // Array med alla isLoggedIn = false
+            // Array with all isLoggedIn = false
             const deactivatedState = state.users.map(user => ({...user, isLoggedIn: false}));
-            // Hitta användaren som valts
-            // Uppdatera vald user till isLoggedIn = true
+            // Find chosen user
+            // Uodate chosen user to isLoggedIn = true
             state.users = deactivatedState.map(user => user.id == action.payload ? ({...user, isLoggedIn: true}) : (user));
             localStorage.setItem('users', JSON.stringify(state.users));
         },  

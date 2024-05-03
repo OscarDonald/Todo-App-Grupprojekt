@@ -1,5 +1,4 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
 
 const initialState = {
     columns: JSON.parse(localStorage.getItem('columns')) || [
@@ -21,8 +20,6 @@ const initialState = {
     ]
 }
 
-
-
 export const columnSlice = createSlice({
     name: 'column',
     initialState,
@@ -35,18 +32,14 @@ export const columnSlice = createSlice({
             if (state.columns.some(existingTitle)) {
                 alert(`Please rename "New List"`)
                 return;
-            }
-            
+            }           
             const column = {
                 title: 'New List',
                 id: nanoid(),
                 tasks: [],
             }
-
-
             state.columns.push(column);
-            localStorage.setItem('columns', JSON.stringify(state.columns));
-            
+            localStorage.setItem('columns', JSON.stringify(state.columns));            
         },
         
         // Filters the columns state to remove chosen column by ID
@@ -88,9 +81,7 @@ export const columnSlice = createSlice({
             ));
             state.columns = updatedColumns;
             localStorage.setItem('columns', JSON.stringify(state.columns));
-        }
-
-        
+        }       
     }
 })
 

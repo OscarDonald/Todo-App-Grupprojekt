@@ -3,7 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'; 
-import { removeTask, editTask } from '../../feature/taskSlice/taskSlice';
+
+import { removeTask, editTask } from '../../../feature/taskSlice/taskSlice';
 
 import styles from './TaskModal.module.css'
 
@@ -23,7 +24,7 @@ function TaskModal() {
     const [availableUsers, setAvailableUsers] = useState(users);
     const [responsibles, setResponsibles] = useState(null);
     const [taskTitle, setTaskTitle] = useState('');
-    const [taskDescription, setTaskDescription] = useState();
+    const [taskDescription, setTaskDescription] = useState('');
     const [doDate, setDoDate] = useState('');
     const [deadline, setDeadline] = useState('');
     const toDaysDate = new Date().toLocaleDateString();

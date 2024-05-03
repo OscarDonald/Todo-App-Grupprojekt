@@ -1,35 +1,12 @@
-## Start
+## Aktiva deltagare
 
-- Navigera till foldern där du vill att projektmappen ska ligga
-- git clone https://github.com/OscarDonald/Todo-App-Grupprojekt#react--vite
-- cd Qurie-anteckningsbok-team-gbg
-- git checkout -b feature/{namn på branch med kebab-case}
+- Jens, Emil, Nyat, Oscar, Toleen och David
 
-## Under tiden
+## Vidareutveckling
 
-- se till att vara i din branch när du jobbar / git checkout feature/{namn på branch med kebab-case}
-- git add .
-- git commit kort meddelande, högst 100tecken, inled med vad du har gjort i bestämd form (add,git fix, delete, m.m.)
-- git push -u origin feature/{namn på branch med kebab-case} (efter att -u är satt första gången kan man använda sig av bara git push)
+- Drag and drop inom kolumnen
+- Skapa flera boards
 
-## Vid färdig feature
+## Länken till backlogen i Trello
 
-- se till att vara i main / git checkout main
-- git pull
-- git checkout feature/{namn på branch med kebab-case}
-- git pull origin main
-- lös merge-conflicts
-- gå till main / git checkout main
-- git merge feature/{namn på branch med kebab-case}
-- Inga konflikter här eftersom du mergade main till din branch först...visst?
-- git push -u origin main
-
-## När storyn är färdig
-
-- Upprepa steg för färdig feature om du inte redan gjort det
-- git branch -d feature/{namn på branch med kebab-case} eller -D om den inte vill med sig
-
-## För att jobba i samma branch (hint: gör en local kopia av branchen)
-
-- git branch -r (listar alla branches på github)
-- git checkout -b {namn på din nya lokala branch} {namn på den listade branchen du vill kopiera}
+- https://trello.com/invite/b/B96iJC4L/ATTI18a13d163bfcbfeb31d71e8f8940739dA4C94E61/the-board-app
