@@ -44,7 +44,7 @@ export default function Task({ task, cssClassname }) {
                 {task.deadline && <p className={styles.deadline}>Deadline: {task.deadline}</p>}
             </div>
             <div className={styles.container__right}>
-                {task.responsible.length > 0 &&
+                {task.responsible && task.responsible.length > 0 && // Check if task.responsible is truthy first
                     <div className={styles.responsible__container}>
                         {task.responsible.map(user => <p className={styles.responsible} key={user.id}>{user.initials}</p>)}
                     </div>}

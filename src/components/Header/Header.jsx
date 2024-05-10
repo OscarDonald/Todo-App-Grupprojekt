@@ -4,6 +4,7 @@ import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import styles from './Header.module.css'
 import Dropdown from "../Dropdown/Dropdown";
 import { useState } from 'react'
+import TaskList from "../TaskList/TaskList";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,9 @@ export default function Header() {
             <div className={styles.header__nav__container}>
                 <nav className={styles.header__nav}>
                     <ul className={styles.header__ul}>
-                    
+                        <li>
+                            <TaskList />
+                        </li>
                         <li 
                             className={styles.header__li}
                             onClick={() => handleClick('add')}
